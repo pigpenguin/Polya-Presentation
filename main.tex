@@ -1,18 +1,15 @@
+\RequirePackage{luatex85}
 \documentclass{beamer}
-%
-% Choose how your presentation looks.
-%
-% For more themes, color themes and font themes, see:
-% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
-%
+
 \mode<presentation>
 {
-  \usetheme{metropolis}   % or try Darmstadt, Madrid, Warsaw, ...
-  \usecolortheme{default} % or try albatross, beaver, crane, ...
-  \usefonttheme{default}  % or try serif, structurebold, ...
+  \usetheme{metropolis}
+  \usecolortheme{default}
+  \usefonttheme{default}
   \setbeamertemplate{navigation symbols}{}
   \setbeamertemplate{caption}[numbered]
-} 
+}
+
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -87,7 +84,7 @@
         	Well, we have 6 beads and 2 choices per bead
             so $2^6$ right?
         \item
-        	This is only true so long as you don't care about symmetry. 
+        	This is only true so long as you don't care about symmetry.
 	\end{itemize}
 \end{column}%
 \end{columns}
@@ -103,7 +100,7 @@
     \end{tikzpicture}
     \end{center}
     \begin{itemize}
-    \item 
+    \item
     	Our initial count considers these different
     \item
     	But one is just the other one rotated
@@ -126,21 +123,21 @@
         		\bracelet{"black black black black black black"}
         	\end{scope}
     	\end{tikzpicture}} & 2 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white white white white white"}
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"white black black black black black"}
         	\end{scope}
     	\end{tikzpicture}} & 12 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black white white white white"}
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"white white black black black black"}
         	\end{scope}
     	\end{tikzpicture}} & 12 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white black white white white"}
         	\begin{scope}[shift={(9,0)}]
@@ -158,21 +155,21 @@
         		\bracelet{"white black black white black black"}
         	\end{scope}
     	\end{tikzpicture}} & 6 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black white black white white"}
         	\begin{scope}[shift={(9cm,0)}]
         		\bracelet{"white white black white black black"}
         	\end{scope}
     	\end{tikzpicture}} & 12 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black black white white white"}
     	\end{tikzpicture}} & 6 \\
-        
+
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white black white black white"}
-    	\end{tikzpicture}} & 2 
+    	\end{tikzpicture}} & 2
 
         \end{tabular}
     \end{column}
@@ -180,13 +177,13 @@
 \end{frame}
 
 \begin{frame}{The Goal}
-	
-    The goal of this talk is to develop a framework for 
+
+    The goal of this talk is to develop a framework for
     answering coloring questions like these where symmetry
     is crucial
 \end{frame}
 
-\section{Polya Build up - Ethan} 
+\section{Polya Build up - Ethan}
 
 \begin{frame}{Permutations}
 	\begin{itemize}
@@ -206,12 +203,12 @@
 	\begin{itemize}
 	\item To specify permutations we use the following notation
     	\begin{itemize}
-    	\item $(12)(34)$ 
+    	\item $(12)(34)$
     	\item $(13)(2)(4)$
     	\item $(1)(2)(3)(4) = e$
     	\end{itemize}
-    \item From this notation it is pretty straight forward to find the composition of 
-    	  two permutations. 
+    \item From this notation it is pretty straight forward to find the composition of
+    	  two permutations.
           \only<1>{\[(1234)(13)(24)=\phantom{(1432)}\]}
           \only<2>{\[(1234)(13)(24)=(14\phantom{32)}\]}
           \only<3>{\[(1234)(13)(24)=(143\phantom{2)}\]}
@@ -239,8 +236,8 @@
 	Thus we can describe the symmetry of an object by defining a subset of permutations
     we allow on it. We require that for any two permutations in our subset that their
     composition must also be in our set and that that every permutations inverse is
-    in our set. 
-    
+    in our set.
+
     Taking our bracelet example from earlier we see that our set of permutations is:
     \[\{e,(123456),(135)(246),(14)(25)(36),(153)(264),(165432)\}\]
 \end{frame}
@@ -304,7 +301,7 @@
 
 	%Consider the example:
     	Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross. To symbolize the purpose of the organization and emphasize its international constituency, its board of directors decides that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow, with an equal number of lines of each color.
-%Based on the specifications of their design for their symbol, we'll be looking at the when 3 sides of the cross are colored red, 3 sides green, 3 sides blue, and 3 sides yellow.   
+%Based on the specifications of their design for their symbol, we'll be looking at the when 3 sides of the cross are colored red, 3 sides green, 3 sides blue, and 3 sides yellow.
 \end{frame}
 
 \begin{frame}{An Application in Industry}
@@ -315,7 +312,7 @@
     \cross
     \end{tikzpicture}
 \end{center}
-    
+
 \end{frame}
 
 \begin{frame}{An Application in Industry}
@@ -381,7 +378,7 @@ From this, we get the cycle index:\\
 \begin{center}
 $P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)$
 \end{center}
-We want the coefficient of $r^3g^3b^3y^3$, so we look at\\ 
+We want the coefficient of $r^3g^3b^3y^3$, so we look at\\
 $x_1^{12}$, $x_4^{3}$, $x_2^{6}$, $x_1^{2} x_2^5$ individually.\\
 (where $r$ = red, $g$ = green, $b$ = blue, $y$ = yellow)
 \end{frame}
@@ -410,7 +407,7 @@ x_1^{2}x_2^5 &= (r+g+b+y)^2(r^2+g^2+b^2+y^2)^5\\
 \begin{itemize}
 \item $P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)$
 \end{itemize}
-So the ways to get the coefficient for $r^3g^3b^3y^3$ from $P$ are...\\ 
+So the ways to get the coefficient for $r^3g^3b^3y^3$ from $P$ are...\\
 \begin{align*}
 &\frac{1}{8}{{12}\choose{3,3,3,3}}+\frac{1}{4}(0) + \frac{3}{8}(0) + \frac{1}{4}(0)
 \end{align*}
@@ -441,7 +438,7 @@ Therefore, we have found that there are 46,200 different ways to design the symb
 %paraphrasing; will elaborate further...
 %\end{frame}
 
-\section{Results, reflection groups, pictures - Clarisse}	
+\section{Results, reflection groups, pictures - Clarisse}
 \begin{frame}{Group Action}
 For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is best to imagine the $nk-gon$ inscribed inside the $k-gon$, and being restricted to the rotations and flips of the $k-gon$.\\
 \end{frame}
@@ -472,7 +469,7 @@ For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is b
 	\end{itemize}
 \end{frame}
 \begin{frame}{}
-So 
+So
 \begin{center}
         $\sum |b_{ij}|x^{nk/a_i}_{a_i}$
         \end{center}
@@ -486,7 +483,7 @@ So
 				\item $kx_2^{(kn)/2}$ for n even$\longleftrightarrow$\\
                 \item $kx_1^2 x_2^{(kn-2)/2}$ for n even $|--|$\\
 			\end{enumerate}
-		  
+
 \end{frame}
 
 \begin{frame}{Understanding the Different Cases Concerning Flips}
@@ -509,7 +506,7 @@ Cycle index of a triangle:
 $x_1^3+2x_3^1+3x_1^1 x_2^1$\\
 
 \begin{table}
-\centering 
+\centering
 \begin{tabular}{l|c|l}
 n & Truncated Vertices & Subdivision of Edges\\ \hline
 2 & $x_1^6+2x_3^2$+\colorbox{yellow}{$3x_1^2x_2^2$} & $x_1^6+2x_3^2$+ \colorbox{cyan}{$3x_2^3$}\\
@@ -550,10 +547,10 @@ $x_1^4+2x_4^1+x_2^2+x_1^2x_2^1+2x_2^2$\\
 $D_4 \circlearrowright 4n-gon$\\
 
 \begin{table}
-\centering 
+\centering
 \begin{tabular}{l|c|l}
 n & Truncated Vertices & Subdivision of Edges\\ \hline
-2 & 
+2 &
 $x_1^8+2x_4^2+x_2^4$+\colorbox{yellow}{$4x_1^2x_2^3$} &
 $x_1^8+2x_4^2+x_2^4$+\colorbox{cyan}{$4x_2^4$}\\
 3 &
@@ -563,7 +560,7 @@ $x_1^{12} +2x_4^3+x_2^6$+ \colorbox{yellow}{$2x_1^2x_2^5$}+\colorbox{cyan}{$2x_2
 $x_1^{16}+2x_4^4+x_2^8$+\colorbox{yellow}{$4x_1^2x_2^7$} &
 $x_1^{16}+2x_4^4+x_2^8$+\colorbox{cyan}{$4x_2^8$}\\
 5 &
-$x_1^{20}+2x_4^5+x_2^{10}$+\colorbox{yellow}{$2x_1^2x_2^4$}+\colorbox{cyan}{$2x_2^{10}$} & 
+$x_1^{20}+2x_4^5+x_2^{10}$+\colorbox{yellow}{$2x_1^2x_2^4$}+\colorbox{cyan}{$2x_2^{10}$} &
 $x_1^{20}+2x_4^5+x_2^{10}$+\colorbox{yellow}{$2x_1^2x_2^4$}+\colorbox{cyan}{$2x_2^{10}$}\\
 6 & $x_1^{24}+2x_4^6+x_2^{12}$+\colorbox{yellow}{$4x_1^2x_2^{11}$} & $ x_1^24+2x_4^6+x_2^{12}$+ \colorbox{cyan}{$4x_2^{12}$}\\
 
@@ -597,8 +594,8 @@ So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
 \section{Some \LaTeX{} Examples}
 
 \begin{frame}
-	Past here are just examples of how to use code.  Should all be 
-    removed before the presentation. 
+	Past here are just examples of how to use code.  Should all be
+    removed before the presentation.
 \end{frame}
 
 \subsection{Bracelets}
@@ -608,16 +605,16 @@ So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
     % To use the function you just feed it a string of space separated colors.
     % The first color starts at 12-o'clock and it moves clockwise.
     % Supported colors are: red, green, blue, cyan, magenta, yellow, black, darkgray
-    % lightgray, brown, lime (please don't use lime), olive, orange, pink, purple, 
-    % teal, violet, and white with the slight exception that black and white get 
-    % replaced with the foreground and background color of our theme respectively. 
+    % lightgray, brown, lime (please don't use lime), olive, orange, pink, purple,
+    % teal, violet, and white with the slight exception that black and white get
+    % replaced with the foreground and background color of our theme respectively.
     % There are ways to define more, but cross that bridge if it ever comes
     % Example usage:
     \begin{center}
     	\begin{tikzpicture}
     		\bracelet{"red green blue cyan magenta yellow black gray darkgray lightgray"}
     	\end{tikzpicture}
-    \end{center}  
+    \end{center}
 \end{frame}
 \begin{frame}{Drawing Bracelets Numbered}
     % To number the bracelet you just add a [true] before the {"color color color ..."} bit
@@ -653,7 +650,7 @@ So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
 
 \begin{itemize}
 \item Use \texttt{tabular} for basic tables --- see Table~\ref{tab:widgets}, for example.
-\item You can upload a figure (JPEG, PNG or PDF) using the files menu. 
+\item You can upload a figure (JPEG, PNG or PDF) using the files menu.
 \item To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
 \end{itemize}
 
