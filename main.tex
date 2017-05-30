@@ -271,8 +271,66 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{Permuting Colorings}
+  As a coloring is a map from our set of objects to
+  our set of colors, if we compose a coloring $c$
+  with a permutation we get a new coloring.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[draw=bg] (-.5,.5) -- (4.5,.5) --
+                     (4.5,-4.5) -- (-.5,-4.5);
+
+      \node<2-> at (0,0) (1) {1};
+      \node<2-> at (0,-1) (2) {2};
+      \node<2-> at (0,-2) (3) {3};
+      \node<2-> at (0,-3) (4) {4};
+
+      \node<2-> at (2,0) (1') {1};
+      \node<2-> at (2,-1) (2') {2};
+      \node<2-> at (2,-2) (3') {3};
+      \node<2-> at (2,-3) (4') {4};
+
+      \node<2-> at (4,-1) (b) {b};
+      \node<2-> at (4,-2) (w) {w};
+
+      \node<3-> at (6,0) (1'') {1};
+      \node<3-> at (6,-1) (2'') {2};
+      \node<3-> at (6,-2) (3'') {3};
+      \node<3-> at (6,-3) (4'') {4};
+
+      \node<3-> at (8,-1) (b') {b};
+      \node<3-> at (8,-2) (w') {w};
+
+      %{{{ (12)(34)
+      \draw<2->[thick, ->] (1) to (2');
+      \draw<2->[thick, ->] (2) to (1');
+      \draw<2->[thick, ->] (3) to (4');
+      \draw<2->[thick, ->] (4) to (3');
+      \node<2-> at (1,-4) {$(12)(34)$};
+      \node<2-> at (2,-4) {$\circ$};
+      %}}}
+
+      %{{{ Coloring 1
+      \draw<2->[thick,->] (1') to (b);
+      \draw<2->[thick,->] (2') to (w);
+      \draw<2->[thick,->] (3') to (b);
+      \draw<2->[thick,->] (4') to (w);
+      \node<2-> at (3,-4) {$(bwbw)$};
+      %}}}
+
+      %{{{ Coloring 2
+      \draw<4->[thick,->] (1'') to (w');
+      \draw<5->[thick,->] (2'') to (b');
+      \draw<6->[thick,->] (3'') to (w');
+      \draw<7->[thick,->] (4'') to (b');
+      \node<8-> at (7,-4) {$(wbwb)$};
+      %}}}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
 \begin{frame}{Symmetry}
-	This gives us a language to discuss symmetry now. Consider the two bracelet from earlier:
+	This gives us a language to discuss symmetry now. Consider the two bracelets from earlier:
 	\begin{center}
     	\begin{tikzpicture}[scale=0.5, transform shape]
     		\bracelet[true]{"white black black black black black"}
