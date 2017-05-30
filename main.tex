@@ -45,7 +45,7 @@
 \title{Counting With Symmetries}
 \author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Kowalenko, Ethan Rooke, Reid Booth, Xavier Ramos}
 \institute{UC Riverside}
-\date{Date of Presentation}
+\date{Friday, June 2\textsuperscript{nd}}
 
 \begin{document}
 
@@ -184,7 +184,7 @@
 
 \begin{frame}{Permutations}
 	\begin{itemize}
-	\item A permutation is a bijection from a set S into it's self
+	\item A permutation is a bijection from a set S into itself
     \item Can be viewed as changing the order of elements
     \item Consider the set $S = \{1,2,3,4\}$ And let $f : S \to S$ be defined
     \begin{align*}
@@ -197,21 +197,44 @@
 \end{frame}
 
 \begin{frame}{Permutations}
-	\begin{itemize}
-	\item To specify permutations we use the following notation
-    	\begin{itemize}
-    	\item $(12)(34)$
-    	\item $(13)(2)(4)$
-    	\item $(1)(2)(3)(4) = e$
-    	\end{itemize}
-    \item From this notation it is pretty straight forward to find the composition of
-    	  two permutations.
-          \only<1>{\[(1234)(13)(24)=\phantom{(1432)}\]}
-          \only<2>{\[(1234)(13)(24)=(14\phantom{32)}\]}
-          \only<3>{\[(1234)(13)(24)=(143\phantom{2)}\]}
-          \only<4>{\[(1234)(13)(24)=(1432)\]}
-    \item The set of all permutation on sets of $n$ elements is $S_n$
-	\end{itemize}
+  To specify permutations we use cycle notation.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[draw=bg] (-.5,.5) -- (2.5,.5) --
+                     (2.5,-4.5) -- (-.5,-4.5);
+
+      \node<2-> at (0,0) (1) {1};
+      \node<2-> at (0,-1) (2) {2};
+      \node<2-> at (0,-2) (3) {3};
+      \node<2-> at (0,-3) (4) {4};
+
+      \node<2-> at (2,0) (1') {1};
+      \node<2-> at (2,-1) (2') {2};
+      \node<2-> at (2,-2) (3') {3};
+      \node<2-> at (2,-3) (4') {4};
+      %{{{ (12)(34)
+      \draw<2>[thick, ->] (1) to (2');
+      \draw<2>[thick, ->] (2) to (1');
+      \draw<2>[thick, ->] (3) to (4');
+      \draw<2>[thick, ->] (4) to (3');
+      \node<2> at (1,-4) {$(12)(34)$};
+      %}}}
+      %{{{ (123)(4)
+      \draw<4-7>[thick, ->] (1) to (2');
+      \draw<5-7>[thick, ->] (2) to (3');
+      \draw<6-7>[thick, ->] (3) to (1');
+      \draw<7>[thick, ->] (4) to (4');
+      \node<3-7> at (1,-4) {$(123)(4)$};
+      %}}}
+      %{{{ Identity example
+      \draw<8>[thick, ->] (1) to (1');
+      \draw<8>[thick, ->] (2) to (2');
+      \draw<8>[thick, ->] (3) to (3');
+      \draw<8>[thick, ->] (4) to (4');
+      \node<8> at (1,-4) {$(1)(2)(3)(4)=e$};
+      %}}}
+    \end{tikzpicture}
+  \end{center}
 \end{frame}
 
 \begin{frame}{Symmetry}
@@ -230,13 +253,10 @@
 \end{frame}
 
 \begin{frame}{Symmetry}
-	Thus we can describe the symmetry of an object by defining a subset of permutations
-    we allow on it. We require that for any two permutations in our subset that their
-    composition must also be in our set and that that every permutations inverse is
-    in our set.
+	Thus we can describe the symmetry of an object by defining the group of permutations we allow on it.
 
-    Taking our bracelet example from earlier we see that our set of permutations is:
-    \[\{e,(123456),(135)(246),(14)(25)(36),(153)(264),(165432)\}\]
+  Taking our bracelet example from earlier we see that our set of permutations is:
+  \[\{e,(123456),(135)(246),(14)(25)(36),(153)(264),(165432)\}\]
 \end{frame}
 %}}}
 %{{{ How to use polya
@@ -324,7 +344,7 @@
            \draw<8-10>[thick, <->] (10) to [out=0,in=90] (7);
            \draw<7-10>[thick, <->] (11) to (6);
            %}}}
-           %{{{ Vertical
+           %{{{ 11-17 Vertical
            \draw<11-17>[thick,dashed] (0,3) -- (0,-3);
            \draw<12-17>[thick, <->] (12) to (2);
            \draw<13-17>[thick, <->] (11) to [out=270,in=270] (3);
@@ -349,14 +369,12 @@
 \end{frame}
 
 \begin{frame}{An Application in Industry}
-%We build the cycle index from the monomials we obtained from the symmetries with the coefficients being the number of ways that action can occur, and the outside coefficient being 1 over the size of the group of symmetries for this problem, which is also the total actions that can occur. (go back and count them? [quick])
+
 From this, we get the cycle index:\\
 %WRITE THIS ON THE BOARD:
-\begin{center}
-$P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)$
-\end{center}
-We want the coefficient of $r^3g^3b^3y^3$, so we look at\\
-$x_1^{12}$, $x_4^{3}$, $x_2^{6}$, $x_1^{2} x_2^5$ individually.\\
+\[P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)\]
+We want the coefficient of $r^3g^3b^3y^3$, so we look at
+$x_1^{12},x_4^{3},x_2^{6},x_1^{2} x_2^5$ individually.\\
 (where $r$ = red, $g$ = green, $b$ = blue, $y$ = yellow)
 \end{frame}
 
