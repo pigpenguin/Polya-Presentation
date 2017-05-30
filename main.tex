@@ -237,6 +237,40 @@
   \end{center}
 \end{frame}
 
+\begin{frame}{Colorings}
+  A coloring $c$ is a map from our set of objects into
+  our set of colors.
+  \begin{center}
+    \begin{tikzpicture}
+      \draw[draw=bg] (-.5,.5) -- (2.5,.5) --
+                     (2.5,-4.5) -- (-.5,-4.5);
+
+      \node<2-> at (0,0) (1) {1};
+      \node<2-> at (0,-1) (2) {2};
+      \node<2-> at (0,-2) (3) {3};
+      \node<2-> at (0,-3) (4) {4};
+
+      \node<2-> at (2,-1) (b) {b};
+      \node<2-> at (2,-2) (w) {w};
+
+      %{{{ Coloring 1
+      \draw<2>[thick,->] (1) to (b);
+      \draw<2>[thick,->] (2) to (w);
+      \draw<2>[thick,->] (3) to (b);
+      \draw<2>[thick,->] (4) to (w);
+      \node<2> at (1,-4) {$(bwbw)$};
+      %}}}
+      %{{{ Coloring 2
+      \draw<3>[thick,->] (1) to (w.west);
+      \draw<3>[thick,->] (2) to (w.west);
+      \draw<3>[thick,->] (3) to (b.west);
+      \draw<3>[thick,->] (4) to (b.west);
+      \node<3> at (1,-4) {$(wwbb)$};
+      %}}}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
 \begin{frame}{Symmetry}
 	This gives us a language to discuss symmetry now. Consider the two bracelet from earlier:
 	\begin{center}
