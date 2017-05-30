@@ -15,6 +15,8 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{xifthen} % If statements in tex are trash
 \usepackage{tikz}    % Allows us to draw diagrams
+\usepackage{gensymb} % Degree symbol
+
 
 %{{{ Bracelets
 \directlua{dofile("bracelet.lua")}                                                % Import lua code
@@ -295,77 +297,55 @@
 \section{Using What We've Learned with an Example! - Amber}
 
 \begin{frame}{An Application in Industry}
-
-	%Consider the example:
-    	Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross. To symbolize the purpose of the organization and emphasize its international constituency, its board of directors decides that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow, with an equal number of lines of each color.
-%Based on the specifications of their design for their symbol, we'll be looking at the when 3 sides of the cross are colored red, 3 sides green, 3 sides blue, and 3 sides yellow.
+	Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross. To symbolize the purpose of the organization and emphasize its international constituency, its board of directors decides that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow, with an equal number of lines of each color.
 \end{frame}
 
 \begin{frame}{An Application in Industry}
-%However, as we now know, we have to consider the symmetries of the regular cross (rotations, flips that maintain the orientation of the polygon), so that we don't double-count essentially equivalent colorings.
 	How many different ways are there to design the symbol, taking into account rotations and flips?
+
 	\begin{center}
-	\begin{tikzpicture}
-    \cross
+	   \begin{tikzpicture}
+       \cross
     \end{tikzpicture}
-\end{center}
+  \end{center}
 
 \end{frame}
 
 \begin{frame}{An Application in Industry}
-%To create the monomial for the regular cross, we'll consider the actions that will not alter the shape.
-%(go to the board)
-	%Identity
-    %90deg rot
-    %180deg rot
-	First, WLOG we can number the sides of the cross as so:
-    \begin{center}
-	\begin{tikzpicture}
-    \numberedcross
-    \end{tikzpicture}
-	\end{center}
-\end{frame}
-
-\begin{frame}{An Application in Industry}
-The identity, the rotations...
-\begin{itemize}
-	\item Identity:
-    	\begin{itemize}
-    	\item cycle notation: $(1)(2)(3)(4)(5)(6)(7)(8)(9)(10)(11)(12)$
-    	\item monomial: $x_1^{12}$
-    	\item number of ways this occurs: $1$
-    	\end{itemize}
-    \item $90\deg$ rotation:
-    	\begin{itemize}
-    	\item cycle notation: $(1,4,7,10)(2,5,8,11)(3,6,9,12)$
-    	\item monomial: $x_4^{3}$
-    	\item number of ways this occurs: $2$
-    	\end{itemize}
-    \item $180\deg$ rotation:
-    	\begin{itemize}
-    	\item cycle notation: $(1,7)(2,8)(3,9)(4,10)(5,11)(6,12)$
-    	\item monomial: $x_2^{6}$
-    	\item number of ways this occurs: $1$
-    	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{An Application in Industry}
-And the flips...
-\begin{itemize}
-\item Diagonal axis:
-    	\begin{itemize}
-    	\item cycle notation: $(1,10)(2,9)(3,8)(4,7)(5,6)(11,12)$
-    	\item monomial: $x_2^{6}$
-    	\item number of ways this occurs: $2$
-    	\end{itemize}
-\item Vertical/Horizontal axis:
-    	\begin{itemize}
-    	\item cycle notation: $(1,7)(2,6)(3,5)(4)(8,12)(9,11)(10)$
-    	\item monomial: $x_1^{2} x_2^5$
-    	\item number of ways this occurs: $2$
-    	\end{itemize}
-\end{itemize}
+  \begin{columns}
+    \begin{column}{.6\textwidth}
+    	   \begin{tikzpicture}
+           %{{{ 3-10, diagonal
+           \draw<3-10>[thick, dashed] (-3,-3) -- (3,3);
+           \draw<5-10>[thick, <->] (1) to [out=270,in=180] (4);
+           \draw<4-10>[thick, <->] (2) to [out=0,in=90] (3);
+           \draw<6-10>[thick, <->] (5) to (12);
+           \draw<9-10>[thick, <->] (9) to [out=270,in=180] (8);
+           \draw<8-10>[thick, <->] (10) to [out=0,in=90] (7);
+           \draw<7-10>[thick, <->] (11) to (6);
+           %}}}
+           %{{{ Vertical
+           \draw<11-17>[thick,dashed] (0,3) -- (0,-3);
+           \draw<12-17>[thick, <->] (12) to (2);
+           \draw<13-17>[thick, <->] (11) to [out=270,in=270] (3);
+           \draw<14-17>[thick, <->] (10) to (4);
+           \draw<15-17>[thick, <->] (9) to [out=90,in=90](5);
+           \draw<16-17>[thick, <->] (8) to (6);
+           %}}}
+           \numberedcross
+         \end{tikzpicture}
+    \end{column}%
+    \hfill%
+    \begin{column}{.38\textwidth}
+      \begin{itemize}
+        \item<1-> Identity: \pause$x_1^{12}$
+        \item<3-> Diagonal: \onslide<10->{$x_2^6$}
+        \item<11-> Vertical: \onslide<17->{$x_1^2x_2^5$}
+        \item<17-> $90\degree$: \onslide<18->{$x_4^3$}
+        \item<19-> $180\degree$: \onslide<20->{$x_2^6$}
+      \end{itemize}
+    \end{column}%
+  \end{columns}
 \end{frame}
 
 \begin{frame}{An Application in Industry}
