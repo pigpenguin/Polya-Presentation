@@ -25,18 +25,18 @@
 \newcommand{\cross}{
     	\draw[thick] (-1,3) -- ++(2,0)  --
         	      ++ (0,-2) -- ++(2,0)  --
-                  ++ (0,-2) -- ++(-2,0) --
-                  ++ (0,-2) -- ++(-2,0) --
-                  ++ (0,2)  -- ++(-2,0) --
-                  ++ (0,2)  -- ++(2,0)  -- ++(0,2);
+                ++ (0,-2) -- ++(-2,0) --
+                ++ (0,-2) -- ++(-2,0) --
+                ++ (0,2)  -- ++(-2,0) --
+                ++ (0,2)  -- ++(2,0)  -- ++(0,2);
 }
 \newcommand{\numberedcross}{
-    	\draw[thick] (-1,3) -- node[fill=bg]{1} ++(2,0)  -- node[fill=bg]{2}
-        	      ++ (0,-2) -- node[fill=bg]{3} ++(2,0)  -- node[fill=bg]{4}
-                  ++ (0,-2) -- node[fill=bg]{5} ++(-2,0) -- node[fill=bg]{6}
-                  ++ (0,-2) -- node[fill=bg]{7} ++(-2,0) -- node[fill=bg]{8}
-                  ++ (0,2)  -- node[fill=bg]{9} ++(-2,0) -- node[fill=bg]{10}
-                  ++ (0,2)  -- node[fill=bg]{11} ++(2,0) -- node[fill=bg]{12} ++(0,2);
+    	\draw[thick] (-1,3) -- node[fill=bg](1){1} ++(2,0)  -- node[fill=bg](2){2}
+        	      ++ (0,-2) -- node[fill=bg](3){3} ++(2,0)  -- node[fill=bg](4){4}
+                ++ (0,-2) -- node[fill=bg](5){5} ++(-2,0) -- node[fill=bg](6){6}
+                ++ (0,-2) -- node[fill=bg](7){7} ++(-2,0) -- node[fill=bg](8){8}
+                ++ (0,2)  -- node[fill=bg](9){9} ++(-2,0) -- node[fill=bg](10){10}
+                ++ (0,2)  -- node[fill=bg](11){11} ++(2,0) -- node[fill=bg](12){12} ++(0,2);
 }
 %}}}
 
