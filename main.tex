@@ -13,17 +13,15 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
+\usepackage{xifthen} % If statements in tex are trash
+\usepackage{tikz}    % Allows us to draw diagrams
 
-% Code which makes the bracelet diagrams automatic
-% The last two slides of this document show how to use this function
-\usepackage{xifthen}                                                              % If statements in tex are trash
-\usepackage{tikz}                                                                 % Allows us to draw diagrams
+%{{{ Bracelets
 \directlua{dofile("bracelet.lua")}                                                % Import lua code
 \newcommand{\bracelet}[2][]{
 \ifthenelse{\isempty{#1}}{\directlua{bracelet(#2)}}{\directlua{bracelet(#2,#1)}}} % Bind latex to lua
-% End of code which makes the diagrams automatic
-
-% Code For Drawing Crosses
+%}}}
+%{{{Crosses
 \newcommand{\cross}{
     	\draw[thick] (-1,3) -- ++(2,0)  --
         	      ++ (0,-2) -- ++(2,0)  --
@@ -40,9 +38,9 @@
                   ++ (0,2)  -- node[fill=bg]{9} ++(-2,0) -- node[fill=bg]{10}
                   ++ (0,2)  -- node[fill=bg]{11} ++(2,0) -- node[fill=bg]{12} ++(0,2);
 }
-% End of code for crosses
+%}}}
 
-\title[Your Short Title]{Counting With Symmetries}
+\title{Counting With Symmetries}
 \author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Kowalenko, Ethan Rooke, Reid Booth, Xavier Ramos}
 \institute{UC Riverside}
 \date{Date of Presentation}
@@ -53,11 +51,7 @@
   \titlepage
 \end{frame}
 
-% Uncomment these lines for an automatically generated outline.
-%\begin{frame}{Outline}
-%  \tableofcontents
-%\end{frame}
-
+%{{{ Introduction
 \section{Introduction}
 
 \begin{frame}{Introduction - Reid}
@@ -182,7 +176,8 @@
     answering coloring questions like these where symmetry
     is crucial
 \end{frame}
-
+%}}}
+%{{{ Polya Build Up
 \section{Polya Build up - Ethan}
 
 \begin{frame}{Permutations}
@@ -241,7 +236,8 @@
     Taking our bracelet example from earlier we see that our set of permutations is:
     \[\{e,(123456),(135)(246),(14)(25)(36),(153)(264),(165432)\}\]
 \end{frame}
-
+%}}}
+%{{{ How to use polya
 \section{How to use Polya - Carlos}
 
 \begin{frame}{Invariant Set $C_{\pi}$}
@@ -294,7 +290,8 @@
 \item Choosing the term $4y_{1}^{2}y_{2}^{2}$ as an example and using the permutation (12)(34) we can see that the coefficient 4 represents four ways to color a set of object using the color $y_{1}$ twice for two objects in the permutation and $y_{2}$ twice for two objects in the permutation.
 \end{itemize}
 \end{frame}
-
+%}}}
+%{{{ Ambers section
 \section{Using What We've Learned with an Example! - Amber}
 
 \begin{frame}{An Application in Industry}
@@ -424,7 +421,8 @@ Therefore, we have found that there are 46,200 different ways to design the symb
 \item This is interesting! So we started looking into the effects of dihedral groups acting on polygons.
 \end{itemize}
 \end{frame}
-
+%}}}
+%{{{ Claires Section
 %This slide is purely for notes that could be used in the dihedral group section:
 
 %\begin{frame}{Dihedral Groups Acting on Polygons}
@@ -489,16 +487,16 @@ So
 \begin{frame}{Understanding the Different Cases Concerning Flips}
 %\includegraphics[width=\textwidth]{your-figure's-file-name}
 
-\includegraphics[width=3cm]{newtriangle_copya.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copya.jpg}
 $x_1^6+2x_3^2+3x_1^2x_2^2$\\
-\includegraphics[width=3cm]{newtriangle_copy1.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copy1.jpg}
 $x_1^6+2x_3^2+ 3x_2^3$\\
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=3cm]{newtriangle_copy1.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copy1.jpg}
 \mapsto
-\includegraphics[width=3cm]{newtriangle_copyb.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copyb.jpg}
 \end{frame}
 
 \begin{frame}
@@ -523,8 +521,8 @@ n & Truncated Vertices & Subdivision of Edges\\ \hline
 \centering
 \begin{tabular}{c|c|c}
 n & Truncated Vertices & Subdivision of Edges\\\hline
-2 &\includegraphics[width=3cm]{8tv}&\includegraphics[width=3cm]{8se} \\\hline
-3 & \includegraphics[width=3cm]{12tv} &\includegraphics[width=3cm]{12se}\\\hline
+2 &\includegraphics[width=3cm]{img/claire/8tv}&\includegraphics[width=3cm]{img/claire/8se} \\\hline
+3 & \includegraphics[width=3cm]{img/claire/12tv} &\includegraphics[width=3cm]{img/claire/12se}\\\hline
 \end{tabular}
 \end{table}
 \end{frame}
@@ -534,8 +532,8 @@ n & Truncated Vertices & Subdivision of Edges\\\hline
 \centering
 \begin{tabular}{c|c|c}
 n & Truncated Vertices & Subdivision of Edges \\\hline
-5 & \includegraphics[width=3cm]{20tv} &\includegraphics[width=3cm]{20se} \\\hline
-6 &\includegraphics[width=3cm]{24_tv} &\includegraphics[width=3cm]{24se}\\\hline
+5 & \includegraphics[width=3cm]{img/claire/20tv} &\includegraphics[width=3cm]{img/claire/20se} \\\hline
+6 &\includegraphics[width=3cm]{img/claire/24_tv} &\includegraphics[width=3cm]{img/claire/24se}\\\hline
 \end{tabular}
 \end{table}
 \end{frame}
@@ -585,101 +583,6 @@ So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
             \end{itemize}
 
 \end{frame}
+%}}}
 
-
-
-\begin{frame}{3D Cases}
-
-\end{frame}
-\section{Some \LaTeX{} Examples}
-
-\begin{frame}
-	Past here are just examples of how to use code.  Should all be
-    removed before the presentation.
-\end{frame}
-
-\subsection{Bracelets}
-
-\begin{frame}{Drawing Bracelets Un-numbered}
-	% To call the function you need to be in a tikz picture
-    % To use the function you just feed it a string of space separated colors.
-    % The first color starts at 12-o'clock and it moves clockwise.
-    % Supported colors are: red, green, blue, cyan, magenta, yellow, black, darkgray
-    % lightgray, brown, lime (please don't use lime), olive, orange, pink, purple,
-    % teal, violet, and white with the slight exception that black and white get
-    % replaced with the foreground and background color of our theme respectively.
-    % There are ways to define more, but cross that bridge if it ever comes
-    % Example usage:
-    \begin{center}
-    	\begin{tikzpicture}
-    		\bracelet{"red green blue cyan magenta yellow black gray darkgray lightgray"}
-    	\end{tikzpicture}
-    \end{center}
-\end{frame}
-\begin{frame}{Drawing Bracelets Numbered}
-    % To number the bracelet you just add a [true] before the {"color color color ..."} bit
-    % Example Usage:
-    \begin{center}
-    	\begin{tikzpicture}
-    		\bracelet[true]{"brown lime olive orange pink purple teal violet white"}
-    	\end{tikzpicture}
-    \end{center}
-\end{frame}
-
-\subsection{Cross}
-\begin{frame}{Numbered}
-\begin{center}
-	\begin{tikzpicture}
-    \numberedcross
-    \end{tikzpicture}
-
-\end{center}
-\end{frame}
-
-\begin{frame}{Un-numbered}
-\begin{center}
-	\begin{tikzpicture}
-    \cross
-    \end{tikzpicture}
-\end{center}
-\end{frame}
-
-\subsection{Tables and Figures}
-
-\begin{frame}{Tables and Figures}
-
-\begin{itemize}
-\item Use \texttt{tabular} for basic tables --- see Table~\ref{tab:widgets}, for example.
-\item You can upload a figure (JPEG, PNG or PDF) using the files menu.
-\item To include it in your document, use the \texttt{includegraphics} command (see the comment below in the source code).
-\end{itemize}
-
-% Commands to include a figure:
-%\begin{figure}
-%\includegraphics[width=\textwidth]{your-figure's-file-name}
-%\caption{\label{fig:your-figure}Caption goes here.}
-%\end{figure}
-
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-Item & Quantity \\\hline
-Widgets & 42 \\
-Gadgets & 13
-\end{tabular}
-\caption{\label{tab:widgets}An example table.}
-\end{table}
-
-\end{frame}
-
-\subsection{Mathematics}
-
-\begin{frame}{Readable Mathematics}
-
-Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-$$S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i$$
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
-
-\end{frame}
 \end{document}
