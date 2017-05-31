@@ -52,7 +52,7 @@
 }
 %}}}
 \title{Counting With Symmetries}
-\author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Kowalenko, Ethan Rooke, Reid Booth, Xavier Ramos}
+\author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Rooke, Reid Booth}
 \institute{UC Riverside}
 \date{Thursday, June 1\textsuperscript{st}}
 
@@ -64,7 +64,7 @@
 
 %{{{ Introduction
 \section{Introduction}
-\begin{frame}{Introduction - Reid}
+\begin{frame}{Introduction}
 \begin{columns}[T]
 \begin{column}{.48\textwidth}
 	\begin{center}
@@ -468,7 +468,7 @@
 
 %}}}
 %{{{ Polya Build Up
-\section{Polya Build up - Ethan}
+\section{Polya Build up}
 
 \begin{frame}{Permutations}
 	\begin{itemize}
@@ -728,95 +728,7 @@
 \end{frame}
 %}}}
 %{{{ Ambers section
-\section{Abstracting Polya from the cycle index}
-
-\begin{frame}
-\begin{itemize}
-
-\item We can use the six bead example and definition of permutations to generalize properties from equations and definitions.
-
-\item Definition: Let G be a group whose elements are the permutations on S and ${|S|} = m$. Next we let m variables $x_{1}, x_{2},...,x_{m}$ with nonnegative coefficients form the product $\beta = x_{1}^{\alpha_{1}}, x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$ for every permutation in G.
-
-\item Also let $\alpha_{i}$ represents the the number of disjoint cycles of length $i$ in the given permutation.
-
-\end{itemize}
-\end{frame}
-
-%%%
-
-\begin{frame}
-\begin{itemize}
-
-\item We can obtain the cyle index of G $P_{G}(x_{1},x_{2},...,x_{m})=\frac{1}{\vert{G}\vert}\sum_{{\pi} \in G}x_{1}^{\alpha_{1}},x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$.
-
-%\item Before we generalize further, lets describe some properties of the cycle index.
-
-\end{itemize}
-\end{frame}
-
-%%%
-
-\begin{frame}
-\begin{itemize}
-%under symmetries of rotation and reflection
-\item For example, referring back to the 6 beaded example, we get the cycle index $P_{D_{6}}(x_{1},x_{2},x_{3},x_{4},x_{5},x_{6})=\frac{1}{9}(x_{1}^{6} + x_{6}^{1} + x_{3}^{2} + x_{2}^{3} + x_{3}^{2} + x_{6}^{1} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2})$.
-
-\item Every term represent a permutation and the superscript represents the number of disjoint cycles in the permutation while the superscript represents the length of each cycle.
-
-\item $7th$ term in the polynomial represents the permutation ${\pi} = (1)(26)(35)(4)$. Therefore two cycles of length two and two cycles of length one correspond to $x = x_{2}^{2}x_{1}^{2}$.
-
-
-\end{itemize}
-\end{frame}
-
-%%%
-
-\begin{frame}
-\begin{itemize}
-
-\item The purpose of the cycle index is to determine the number of distinct colorings acted on by the group of symmetries G.
-
-\item For example, Let m equal the number of any distinct colors, we obtain the polynomial, $P_{D_{6}}(m,m,m,m)=\frac{1}{9}(m_{1}^{6} + 2m_{6}^{1} + 2m_{3}^{2} + m_{2}^{3} + 3m_{2}^{2}m_{1}^{2})$.
-
-\item Specifically, when $m=2$ we obtain $P_{D_{6}}(2,2,2,2)=$.
-
-\end{itemize}
-\end{frame}
-
-%%%% need to include slide of equivalent colorings
-
-%%%
-
-\begin{frame}
-\begin{itemize}
-
-\item While the cycle index tells us the number of distinct objects we seek, we can abstract even further to obtain not only the number of distinct objects but also an idea of the appearance of what each object should look like.
-
-\item Polya's Enumeration Formula: Let S be a set of elements and G a group of permutations on S, where each permutation induces an equivalence relation on the colorings of S. The inventory of nonequivalent colorings of S using colors $c_{1},c_{2},...,c_{m}$ is the function $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$.
-
-\item As an observation, the k in $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$ refers to the largest cycle length.
-
-
-\end{itemize}
-\end{frame}
-
-%% To clarify how to use polya, and properties
-%% observing properties from the polya's theorem and resorting back to necklace problem.
-
-\begin{frame}
-\begin{itemize}
-
-\item Resorting back to our bead example, if we let b and w represent our two colors, then we obtain $P_{D_{4}}((b+w), (b^2+w^2), (b^3+w^3), (b^4+w^4)) = b^6 + b^5w + 3b^4w^2 + 4b^3w^3 + 3b^2w^4 + bw^5 + w^6$.
-
-\item The coefficient, of each term, $A_{i}b^{k}w^{j}$ determines the number of possible distinct colorings on the six beaded bracelet using the colors b and w, i and j times for each bead.
-
-\item for example, the third term $3b^4w^2$ corresponds to 3 possible colorings, coloring 4 bead's black and 2 bead's white.
-
-\end{itemize}
-\end{frame}
-
-
-\section{Using What We've Learned with an Example! - Amber}
+\section{Using What We've Learned with an Example!}
 
 \begin{frame}{An Application in Industry}
 
@@ -1021,7 +933,7 @@ Therefore, we have found that there are 46,200 different ways to design the symb
 %\end{frame}
 %}}}
 %{{{ Claires Section
-\section{Results, reflection groups, pictures - Clarisse}
+\section{Results, reflection groups, pictures}
 %\begin{frame}{Group Action}
 %For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is best to imagine the $nk-gon$ inscribed inside the $k$-gon, and being restricted to the rotations and flips of the $k-gon$.\\
 %\end{frame}
