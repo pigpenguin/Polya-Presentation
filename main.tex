@@ -17,6 +17,8 @@
 \usepackage{tikz}    % Allows us to draw diagrams
 \usepackage{gensymb} % Degree symbol
 
+\usepackage{graphicx}
+\graphicspath{{./img/claire/}}
 
 %{{{ Bracelets
 \directlua{dofile("bracelet.lua")}                                                % Import lua code
@@ -1019,39 +1021,291 @@ Therefore, we have found that there are 46,200 different ways to design the symb
 %\end{frame}
 %}}}
 %{{{ Claires Section
-%This slide is purely for notes that could be used in the dihedral group section:
-
-%\begin{frame}{Dihedral Groups Acting on Polygons}
-%Our findings:
-%\begin{itemize}
-%\item the action matters $\rightarrow$ how to embed/cut the polygon
-%\item different ambient groups change things $\rightarrow$ not ambient under anything?
-%\item $D_k$ formula for when k is prime
-%\item what doesn't work: even k's because rotations get messed up due to subgroups of cyclic groups, ...?
-%\end{itemize}
-%paraphrasing; will elaborate further...
-%\end{frame}
-
 \section{Results, reflection groups, pictures - Clarisse}
-\begin{frame}{Group Action}
-For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is best to imagine the $nk-gon$ inscribed inside the $k-gon$, and being restricted to the rotations and flips of the $k-gon$.\\
-\end{frame}
+%\begin{frame}{Group Action}
+%For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is best to imagine the $nk-gon$ inscribed inside the $k$-gon, and being restricted to the rotations and flips of the $k-gon$.\\
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	So we just saw an example which used Polya's Theorem to color the twelve sides of a cross.\\
+	We observed that this twelve sided figure produced a cycle index similar to that of a square (the $D_4$ 	dihedral group).\\
 
-\begin{frame}{Algorithm for constructing the polynomials  which represent a dihedral group $D_k$ acting on a $nk-gon$.}
-	\begin{itemize}
-    	\item construct the normal k-gon.
-        	\begin{itemize}
-            	\item Rotations
-                \item Flips
-             \end{itemize}
-        \item Account for the n-cases
+	\begin{table}
+		\centering
+		\begin{tabular}{l|c|c|c|c|c}
+			Square\\\hline
+			Monomials  & $x_1^4$ & $2x_4^1$ & $x_2^2$ & $x_1^2x_2^1$ & $2x_2^2$\\
+			Rotations+Flips & $e$ & \textpm 90 \textdegree &  180\textdegree & E-E flips & V-V flips\\
+		\end{tabular}
+	\end{table}
+
+	\begin{table}
+		\centering
+		\begin{tabular}{l|c|c|c|c|c}
+			Cross \\\hline
+			Monomials & $x_1^{12}$ & $2x_4^3$ & $x_2^6$ & $2x_1^2x_2^5$ & $2x_2^6$ \\
+			Rotations+Flips & $e$ & \textpm 90 \textdegree & 180\textdegree & E-E flips & V-V flips\\
+		\end{tabular}
+        This is an example of a group action.  The cycle index of a normal cross is actually $D_4 		\circlearrowright$ $12$ sided polygon.
+	\end{table}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame}{Our Question}
+    \begin{itemize}
+    \item Our group became interested in creating a formula which would generalize the cycle index of a $D_k$ 		dihedral group $\circlearrowright$ $nk$-gon.
+    \begin{itemize}
+    \item In the Cross example we had k=4 and n=3.
+    \end{itemize}
+    \item The creation of a formula is dependent upon the embedding.
     \end{itemize}
 \end{frame}
-
-\begin{frame}{Rotations}
-    First approach the normal k-gon. In order to construct the terms which represent rotations of the normal $k-gon$ we will take the following steps:\\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Base Case}
+	\begin{itemize}
+    	\item To investigate how dihedral groups act on polygons we decided to start out with $D_3  				\circlearrowright$ $3n$-gon.\\
+    	\item constructed the $3n$-gons by truncating the vertices of a triangle.
+	\end{itemize}
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
+	\begin{table}
+	\centering
+		\begin{tabular}{c|c|c|l}
+			n & nk & cycle index & image\\\hline
+			1& 3& $\dfrac{1}{6}(x_1^3+2x_3^1+3x_1^1 x_2^1)$ & triangle \\\hline
+			2 & 6 & $\dfrac{1}{6}(x_1^6+2x_3^2+3x_1^2x_2^2)$ & 			\includegraphics[width=2cm]{newtriangle_copya}\\\hline
+			3 & 9 & $\dfrac{1}{6}(x_1^9+2x_3^3+3x_1^1x_2^4)$ & \includegraphics[width=2cm]{newtriangle_copy9}\\\hline
+			4 & 12 & $\dfrac{1}{6}(x_1^{12}+2x_3^4+3x_1^2x_2^5)$ & \includegraphics[width=2cm]{newtriangle_copy12}\\\hline
+		\end{tabular}
+	\end{table}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Understanding the Different Cases Concerning Flips}
+	This is a hexagon inscribed inside a triangle:\\
+		\includegraphics[width=3cm]{newtriangle_copya}
+		$\dfrac{1}{6}(x_1^6+2x_3^2+3x_1^2x_2^2)$\\
+	But so is this:\\
+		\includegraphics[width=3cm]{newtriangle_copy1}
+		$\dfrac{1}{6}(x_1^6+2x_3^2+ 3x_2^3)$\\
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	Thankfully we are able to draw the second picture another way.
+	\begin{center}
+		\includegraphics[width=3cm]{newtriangle_copy1}
+		\mapsto
+		\includegraphics[width=3cm]{newtriangle_copyb}
+	\end{center}
+	Both of these shapes have the same cycle index.\\
+  \end{frame}
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \begin{frame}{Embedding Matters}
+	All together we now have two ways to construct $nk$-gons which are acted on by $D_k$ dihedral groups.\\
+	\begin{itemize}
+		\item Truncate vertices
+		\item Subdivide edges
+	\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{table}
+\centering
+\begin{tabular}{c|c|c|c}
+n & nk& Truncated Vertices & Subdivision of Edges\\\hline
+2 & 8 & \includegraphics[width=3cm]{8tv}&\includegraphics[width=3cm]{8se} \\\hline
+3 & 12 & \includegraphics[width=3cm]{12tv} &\includegraphics[width=3cm]{12se}\\\hline
+\end{tabular}
+\end{table}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{table}
+\centering
+\begin{tabular}{c|c|c|c}
+n & nk & Truncated Vertices & Subdivision of Edges \\\hline
+5 & 20 & \includegraphics[width=3cm]{20tv} &\includegraphics[width=3cm]{20se} \\\hline
+6 & 24 & \includegraphics[width=3cm]{24_tv} &\includegraphics[width=3cm]{24se}\\\hline
+\end{tabular}
+\end{table}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+	Cycle index of a triangle:
+	$x_1^3+2x_3^1+3x_1^1 x_2^1$\\
+
+	\begin{table}
+		\centering
+		\begin{tabular}{l|c|l}
+			n &
+            Truncated Vertices &
+            Subdivision of Edges\\ \hline
+			2 &
+            $\frac{1}{6}$($x_1^6+2x_3^2+$\colorbox{yellow}{$3x_1^2x_2^2$}) &
+            $\frac{1}{6}$($x_1^6+2x_3^2+$ \colorbox{cyan}{$3x_2^3$})\\
+			3 &
+            $\frac{1}{6}$($x_1^9+2x_3^3+$\colorbox{pink}{$3x_1^1x_2^4$})  &
+            $\frac{1}{6}$($x_1^9+2x_3^3+$\colorbox{pink}{$3x_1^1x_2^4$})\\
+			4 &
+            $\frac{1}{6}$($x_1^{12}+2x_3^4+$\colorbox{yellow}{$3x_1^2x_2^5$}) &
+            $\frac{1}{6}$($x_1^{12}+2x_3^4+$\colorbox{cyan}{$3x_2^6$})\\
+			5&
+            $\frac{1}{6}$($x_1^{15}+2x_3^5+$\colorbox{pink}{$3x_1^1x_2^7$}) &
+			$\frac{1}{6}$($x_1^{15}+2x_3^5+$\colorbox{pink}{$3x_1^1x_2^7$})\\
+		\end{tabular}
+		\caption{$D_3 \circlearrowright 3n$-gon}
+	\end{table}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{The Pattern:$D_3 \circlearrowright$ $n3$-gon}
+\[\dfrac{1}{6}\Bigg(x_1^{3n}+(3-1)x_3^n +
+\begin{cases}
+3x_1^1x_2^{(3n-1)/2} & \text{n odd, V-E flip} \\
+3x_1^2x_2^{(3n-2)/2} & \text{n even, E-E flip}\\
+3x_1^2x_2^{(3n)/2} & \text{n even, V-V flip}
+\end{cases}\Bigg)\]
+ \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \begin{frame}{The Pattern:r $D_k \circlearrowright$ $nk$-gon with k-prime}
+\[\dfrac{1}{2k}\Bigg(x_1^{kn}+(k-1)x_k^n +
+\begin{cases}
+kx_1^1x_2^{(kn-1)/2} & \text{n odd, V-E flip} \\
+kx_1^2x_2^{(kn-2)/2} & \text{n even, E-E flip}\\
+kx_1^2x_2^{(kn)/2} & \text{n even, V-V flip}
+\end{cases}\bigg)\]
+ \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}{Flips}
+ %	Next, in order to find the polynomial of $d_k \circlearrowright nk-gon$ we need to add in the terms which 	  represent flips.\\
+%	If $k$ is prime, then we have three cases:
+%			\begin{enumerate}
+%				\item $ kx_1^1x_2^{(kn-1)/2}$  for n odd $\longmapsto$\\
+%				\item $kx_2^{(kn)/2}$ for n even$\longleftrightarrow$\\
+%                \item $kx_1^2 x_2^{(kn-2)/2}$ for n even $|--|$\\
+%			\end{enumerate}
+
+%\end{frame}
+\begin{frame}
+Cycle index of a square:
+$x_1^4+2x_4^1+x_2^2+x_1^2x_2^1+2x_2^2$\\
+
+$D_4 \circlearrowright 4n$-gon\\
+
+\begin{table}
+\centering
+\begin{tabular}{l|c|l}
+n & Truncated Vertices & Subdivision of Edges\\ \hline
+2 &
+$\frac{1}{8}$($x_1^8+2x_4^2+x_2^4+$\colorbox{yellow}{$4x_1^2x_2^3$}) &
+$\frac{1}{8}$($x_1^8+2x_4^2+x_2^4+$\colorbox{cyan}{$4x_2^4$})\\
+3 &
+$\frac{1}{8}$($x_1^{12} +2x_4^3+x_2^6+$ \colorbox{yellow}{$2x_1^2x_2^5$}$+$\colorbox{cyan}{$2x_2^6$}) &
+$\frac{1}{8}$($x_1^{12} +2x_4^3+x_2^6+$ \colorbox{yellow}{$2x_1^2x_2^5$}$+$\colorbox{cyan}{$2x_2^6$})\\
+4 &
+$\frac{1}{8}$($x_1^{16}+2x_4^4+x_2^8+$\colorbox{yellow}{$4x_1^2x_2^7$}) &
+$\frac{1}{8}$($x_1^{16}+2x_4^4+x_2^8+$\colorbox{cyan}{$4x_2^8$})\\
+5 &
+$\frac{1}{8}$($x_1^{20}+2x_4^5+x_2^{10}+$\colorbox{yellow}{$2x_1^2x_2^4$}$+$\colorbox{cyan}{$2x_2^{10}$}) &
+$\frac{1}{8}$($x_1^{20}+2x_4^5+x_2^{10}+$\colorbox{yellow}{$2x_1^2x_2^4$}$+$\colorbox{cyan}{$2x_2^{10}$}\\
+6 & $\dfrac{1}{8}$($x_1^{24}+2x_4^6+x_2^{12}+$\colorbox{yellow}{$4x_1^2x_2^{11}$}) & $\dfrac{1}{8}$($ x_1^24+2x_4^6+x_2^{12}+$ \colorbox{cyan}{$4x_2^{12}$})\\
+
+\end{tabular}
+\caption{$D_4 \circlearrowright 4n-gon$}
+\end{table}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Algorithm for constructing the polynomials  which represent a dihedral group $D_k$ acting on a $nk-gon$.}
+So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
+	 $k$ Even:\\
+			\begin{itemize}
+    			\item $k/2x_1^2x_2^{(kn-2)/2}+k/2x_2^{kn/2}$ n odd ( V-V flips + E-E flips)
+                \item $kx_1^2x_2^{(kn-2)/2}$ n even (E-E flips)
+                \item $kx_2^{kn/2}$ n odd (V-V flips)
+             \end{itemize}
+         $k$ Odd:\\
+         	\begin{itemize}
+            	\item $kx_1^1x_2^{nk/2}$ n odd (V-E flips)
+                \item $kx_2^{nk/2}$ n even (E-E flips)
+                \item $kx_1^2x_2^{(nk-2)/2}$ n even (V-V flips)
+            \end{itemize}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\begin{table}
+\centering
+\begin{tabular}{c|c|c|c|c|c|c}
+1&
+$x_1^1$ &&&&&
+\\\hline
+&$e$ &&&&&
+\\\hline
+2&
+$x_1^2$ &
+\textcolor{orange}{$x_2^1$} &&
+\\\hline
+& $e$ &&
+\textcolor{orange}{180 \textdegree} &&&
+\\\hline
+3 &
+$x_1^3$ &&
+\textcolor{green}{$x_3^1$}&&&
+\\\hline
+& $e$ &&
+\textcolor{green}{120\textdegree, 240\textdegree}&&
+\\\hline
+4 &
+$x_1^4$ &
+\textcolor{orange}{$x_2^2$} &&
+\textcolor{purple}{$x_4^1$} &
+\\\hline
+& $e$ &
+\textcolor{orange}{180 \textdegree} &&
+\textcolor{purple}{90 \textdegree, 270\textdegree}&&
+\\\hline
+6&
+$x_1^6$ &
+\textcolor{orange}{$x_2^3$} &
+\textcolor{green}{$x_3^2$} &&
+\textcolor{blue}{$x_6^1$}&
+\\\hline
+\end{tabular}
+\end{table}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{frame}
+% \begin{table}
+% \centering
+% \begin{tabular}{c|c|c|c|c|c|c|c|c|c}
+% 1 & $x_1^1$ &\\\hline
+
+% & ID&\\\hline
+
+% 2 & $x_1^2$ & \textcolor{orange}{$x_2^1$} &\\\hline
+
+% & ID & \textcolor{orange}{180 \textdegree} &\\\hline
+
+% 3& $x_1^3$ & \textcolor{green}{$2x_3^1$} &\\\hline
+
+% & ID & \textcolor{green}{120\textdegree, 240\textdegree}  \\\hline
+
+% 4& $x_1^4$ & \textcolor{orange}{$x_2^2$} & \textcolor{red}{$2x_4^1$}\\\hline
+
+% & ID & \textcolor{orange}{180 \textdegree} & \textcolor{red}{90 \textdegree, 270\textdegree}
+
+% 6 & $x_1^6$ & \textcolor{orange}{$x_2^3$} & \textcolor{green}{$2x_3^4$} & \textcolor{blue}{$x_6^1$}\\\hline
+
+% & ID & \textcolor{orange}{180 \textdegree} & \textcolor{green}{120\textdegree, 240\textdegree} & \textcolor{red}{90 \textdegree, 270\textdegree} & \textcolor{blue}{60 \textdegree, 300 \textdegree}
+
+% 12 & $x_1^{12}$ & \textcolor{orange}{$x_2^6$} & \textcolor{green}{$2x_3^4$} & \textcolor{red}{$2x_4^3$} & \textcolor{blue}{$2x_6^2$} & \textcolor{purple}{$4x_1^{12}$}\\\hline
+
+% & ID & \textcolor{orange}{180 \textdegree} & \textcolor{green}{120\textdegree, 240\textdegree} & \textcolor{red}{90 \textdegree, 270\textdegree} & \textcolor{blue}{60 \textdegree, 300 \textdegree} & \textcolor{purple}{30\textdegree, 130\textdegree, 210\textdegree, 330\textdegree}
+% \end{tabular}
+% \end{table}
+% \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Rotations for a k-gon}
 	\begin{itemize}
 		\item	Suppose $a_1,a_2,...,a_n$ are divisors of $k$.\\
  		\item For each divisor $a_i$ assemble the values which are coprime to it. \\
@@ -1062,122 +1316,11 @@ For the purposes of analyzing $D_k$ dihedral groups acting on $nk-gons$, it is b
         \end{center}
 	\end{itemize}
 \end{frame}
-\begin{frame}{}
-So
+\begin{frame}{Rotations for $D_k \circlearrowright$ $nk$-gon}
+
 \begin{center}
         $\sum |b_{ij}|x^{nk/a_i}_{a_i}$
         \end{center}
-\end{frame}
-
-\begin{frame}{Flips}
- Next, in order to find the polynomial of $d_k \circlearrowright nk-gon$ we need to add in the terms which represent flips.\\
-	If $k$ is prime, then we have three cases:
-			\begin{enumerate}
-				\item $ kx_1^1x_2^{(kn-1)/2}$  for n odd $\longmapsto$\\
-				\item $kx_2^{(kn)/2}$ for n even$\longleftrightarrow$\\
-                \item $kx_1^2 x_2^{(kn-2)/2}$ for n even $|--|$\\
-			\end{enumerate}
-
-\end{frame}
-
-\begin{frame}{Understanding the Different Cases Concerning Flips}
-%\includegraphics[width=\textwidth]{your-figure's-file-name}
-
-\includegraphics[width=3cm]{img/claire/newtriangle_copya}
-$x_1^6+2x_3^2+3x_1^2x_2^2$\\
-\includegraphics[width=3cm]{img/claire/newtriangle_copy1}
-$x_1^6+2x_3^2+ 3x_2^3$\\
-\end{frame}
-
-\begin{frame}
-\includegraphics[width=3cm]{img/claire/newtriangle_copy1}
-\mapsto
-\includegraphics[width=3cm]{img/claire/newtriangle_copyb}
-\end{frame}
-
-\begin{frame}
-Cycle index of a triangle:
-$x_1^3+2x_3^1+3x_1^1 x_2^1$\\
-
-\begin{table}
-\centering
-\begin{tabular}{l|c|l}
-n & Truncated Vertices & Subdivision of Edges\\ \hline
-2 & $x_1^6+2x_3^2$+\colorbox{yellow}{$3x_1^2x_2^2$} & $x_1^6+2x_3^2$+ \colorbox{cyan}{$3x_2^3$}\\
-3 & $x_1^9+2x_3^3$+\colorbox{pink}{$3x_1^1x_2^4$}  &  $x_1^9+2x_3^3$+\colorbox{pink}{$3x_1^1x_2^4$}\\
-4 & $x_1^12+2x_3^4$+\colorbox{yellow}{$3x_1^2x_2^5$} & $x_1^12+2x_3^4$+\colorbox{cyan}{$3x_2^6$}\\
-5& $x_1^15+2x_3^5$+\colorbox{pink}{$3x_1^1x_2^7$} & $x_1^15+2x_3^5$+\colorbox{pink}{$3x_1^1x_2^7$}\\
-\end{tabular}
-\caption{$D_3 \circlearrowright 3n-gon$}
-\end{table}
-\end{frame}
-
-\begin{frame}
-\begin{table}
-\centering
-\begin{tabular}{c|c|c}
-n & Truncated Vertices & Subdivision of Edges\\\hline
-2 &\includegraphics[width=3cm]{img/claire/8tv}&\includegraphics[width=3cm]{img/claire/8se} \\\hline
-3 & \includegraphics[width=3cm]{img/claire/12tv} &\includegraphics[width=3cm]{img/claire/12se}\\\hline
-\end{tabular}
-\end{table}
-\end{frame}
-
-\begin{frame}
-\begin{table}
-\centering
-\begin{tabular}{c|c|c}
-n & Truncated Vertices & Subdivision of Edges \\\hline
-5 & \includegraphics[width=3cm]{img/claire/20tv} &\includegraphics[width=3cm]{img/claire/20se} \\\hline
-6 &\includegraphics[width=3cm]{img/claire/24_tv} &\includegraphics[width=3cm]{img/claire/24se}\\\hline
-\end{tabular}
-\end{table}
-\end{frame}
-
-\begin{frame}
-Cycle index of a square:
-$x_1^4+2x_4^1+x_2^2+x_1^2x_2^1+2x_2^2$\\
-
-$D_4 \circlearrowright 4n-gon$\\
-
-\begin{table}
-\centering
-\begin{tabular}{l|c|l}
-n & Truncated Vertices & Subdivision of Edges\\ \hline
-2 &
-$x_1^8+2x_4^2+x_2^4$+\colorbox{yellow}{$4x_1^2x_2^3$} &
-$x_1^8+2x_4^2+x_2^4$+\colorbox{cyan}{$4x_2^4$}\\
-3 &
-$x_1^{12} +2x_4^3+x_2^6$+ \colorbox{yellow}{$2x_1^2x_2^5$}+\colorbox{cyan}{$2x_2^6$} &
-$x_1^{12} +2x_4^3+x_2^6$+ \colorbox{yellow}{$2x_1^2x_2^5$}+\colorbox{cyan}{$2x_2^6$}\\
-4 &
-$x_1^{16}+2x_4^4+x_2^8$+\colorbox{yellow}{$4x_1^2x_2^7$} &
-$x_1^{16}+2x_4^4+x_2^8$+\colorbox{cyan}{$4x_2^8$}\\
-5 &
-$x_1^{20}+2x_4^5+x_2^{10}$+\colorbox{yellow}{$2x_1^2x_2^4$}+\colorbox{cyan}{$2x_2^{10}$} &
-$x_1^{20}+2x_4^5+x_2^{10}$+\colorbox{yellow}{$2x_1^2x_2^4$}+\colorbox{cyan}{$2x_2^{10}$}\\
-6 & $x_1^{24}+2x_4^6+x_2^{12}$+\colorbox{yellow}{$4x_1^2x_2^{11}$} & $ x_1^24+2x_4^6+x_2^{12}$+ \colorbox{cyan}{$4x_2^{12}$}\\
-
-\end{tabular}
-\caption{$D_4 \circlearrowright 4n-gon$}
-\end{table}
-\end{frame}
-
-\begin{frame}{}
-So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
-	 $k$ Even:\\
-			\begin{itemize}
-    			\item $k/2x_1^2x_2^{(kn-2)/2}+k/2x_2^{kn/2}$ n odd ( $\longleftrightarrow$ and |--|)
-                \item $kx_1^2x_2^{(kn-2)/2}$ n even (uniformly $|--|$)
-                \item $kx_2^{kn/2}$ n odd (uniformly $\longleftrightarrow$ )
-             \end{itemize}
-         $k$ Odd:\\
-         	\begin{itemize}
-            	\item $kx_1^1x_2^{nk/2}$ n odd ($\mapsto$)
-                \item $kx_2^{nk/2}$ n even ($|--|$)
-                \item $kx_1^2x_2^{(nk-2)/2}$ n even ($\longleftrightarrow$)
-            \end{itemize}
-
 \end{frame}
 %}}}
 
