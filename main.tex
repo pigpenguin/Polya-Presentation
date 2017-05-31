@@ -45,7 +45,7 @@
 \title{Counting With Symmetries}
 \author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Kowalenko, Ethan Rooke, Reid Booth, Xavier Ramos}
 \institute{UC Riverside}
-\date{Friday, June 2\textsuperscript{nd}}
+\date{Thursday, June 1\textsuperscript{st}}
 
 \begin{document}
 
@@ -427,34 +427,56 @@
   \begin{columns}
     \begin{column}{.6\textwidth}
     	   \begin{tikzpicture}
-           %{{{ 3-10, diagonal
-           \draw<3-10>[thick, dashed] (-3,-3) -- (3,3);
-           \draw<5-10>[thick, <->] (1) to [out=270,in=180] (4);
-           \draw<4-10>[thick, <->] (2) to [out=0,in=90] (3);
-           \draw<6-10>[thick, <->] (5) to (12);
-           \draw<9-10>[thick, <->] (9) to [out=270,in=180] (8);
-           \draw<8-10>[thick, <->] (10) to [out=0,in=90] (7);
-           \draw<7-10>[thick, <->] (11) to (6);
+           \setcounter{beamerpauses}{3} %do nothing for 3 steps
+           %{{{ diagonal
+            \draw<+-+(7)>[thick, dashed] (-3,-3) -- (3,3);
+            \draw<+-+(6)>[thick, <->] (2) to [out=0,in=90] (3);
+            \draw<+-+(5)>[thick, <->] (1) to [out=270,in=180] (4);
+            \draw<+-+(4)>[thick, <->] (5) to (12);
+            \draw<+-+(3)>[thick, <->] (11) to (6);
+            \draw<+-+(2)>[thick, <->] (10) to [out=0,in=90] (7);
+            \draw<+-+(1)>[thick, <->] (9) to [out=270,in=180] (8);
+            \stepcounter{beamerpauses}
            %}}}
-           %{{{ 11-17 Vertical
-           \draw<11-17>[thick,dashed] (0,3) -- (0,-3);
-           \draw<12-17>[thick, <->] (12) to (2);
-           \draw<13-17>[thick, <->] (11) to [out=270,in=270] (3);
-           \draw<14-17>[thick, <->] (10) to (4);
-           \draw<15-17>[thick, <->] (9) to [out=90,in=90](5);
-           \draw<16-17>[thick, <->] (8) to (6);
+           %{{{ Vertical
+            \draw<+-+(6)>[thick,dashed] (0,3) -- (0,-3);
+            \draw<+-+(5)>[thick, <->] (12) to (2);
+            \draw<+-+(4)>[thick, <->] (11) to [out=270,in=270] (3);
+            \draw<+-+(3)>[thick, <->] (10) to (4);
+            \draw<+-+(2)>[thick, <->] (9) to [out=90,in=90](5);
+            \draw<+-+(1)>[thick, <->] (8) to (6);
+            \stepcounter{beamerpauses}
            %}}}
+           %{{{ 90 rotation
+            \stepcounter{beamerpauses}
+            \draw<+-+(4)>[thick, ->] (1) to [out=270,in=180] (4);
+            \draw<+-+(3)>[thick, ->] (4) to [out=180,in=90] (7);
+            \draw<+-+(2)>[thick, ->] (7) to [out=90,in=0] (10);
+            \draw<+-+(1)>[thick, ->] (10) to [out=0, in=270] (1);
+            \stepcounter{beamerpauses}
+          %}}}
+           %{{{ 180 rotation
+            \stepcounter{beamerpauses}
+            \draw<+-+(6)>[thick, <->] (1) to (7);
+            \draw<+-+(5)>[thick, <->] (2) to (8);
+            \draw<+-+(4)>[thick, <->] (3) to (9);
+            \draw<+-+(3)>[thick, <->] (4) to (10);
+            \draw<+-+(2)>[thick, <->] (5) to (11);
+            \draw<+-+(1)>[thick, <->] (6) to (12);
+            \stepcounter{beamerpauses}
+          %}}}
            \numberedcross
          \end{tikzpicture}
     \end{column}%
     \hfill%
     \begin{column}{.38\textwidth}
       \begin{itemize}
-        \item<1-> Identity: \pause$x_1^{12}$
-        \item<3-> Diagonal: \onslide<10->{$x_2^6$}
-        \item<11-> Vertical: \onslide<17->{$x_1^2x_2^5$}
-        \item<17-> $90\degree$: \onslide<18->{$x_4^3$}
-        \item<19-> $180\degree$: \onslide<20->{$x_2^6$}
+        \setcounter{beamerpauses}{1} %Reset our counter
+        \item<+-> Identity: \onslide<+->{$x_1^{12}$}
+        \item<+-> Diagonal: \addtocounter{beamerpauses}{6}\onslide<+->{$x_2^6$}
+        \item<+-> Vertical: \addtocounter{beamerpauses}{5} \onslide<+->{$x_1^2x_2^5$}
+        \item<+-> $90\degree$: \addtocounter{beamerpauses}{4}\onslide<+->{$x_4^3$}
+        \item<+-> $180\degree$: \addtocounter{beamerpauses}{6}\onslide<+->{$x_2^6$}
       \end{itemize}
     \end{column}%
   \end{columns}
