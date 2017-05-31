@@ -638,56 +638,90 @@
 \end{frame}
 %}}}
 %{{{ How to use polya
-\section{How to use Polya - Carlos}
+\section{Abstracting Polya from the cycle index}
 
-\begin{frame}{Invariant Set $C_{\pi}$}
+\begin{frame}
 \begin{itemize}
-\item Given a set of objects S, A set of colorings C (i.e. functions assigning colors to these objects) and a group G, we can denote the set of colors not changing when acted upon any permutation ${\pi}$ in G, as $C_{\pi}$.
-\item For example, given a permutation (12)(3456) in G and letting w = white and b = black, a possible coloring in $C_{\pi}$ would be $c =(bbwwww)$ because the coloring remains unchanged under the permutation. Yet, a coloring (bwwwww) would not belong in the invariant set because the permutation would cause the color b to become w and the w in the first position to become b.
-\end{itemize}
-\end{frame}
-%
-%
-\begin{frame}{Burnsides Lemma}
-\begin{itemize}
-\item Let the number N correspond to the number of equivalence classes of the set of colorings C. Each equivalence class is formed by an equivalence relaion ~, where two colorings in C are related if one coloring can be  transformed to the other via a permutation in G.
-\item For example, let a permutation in G be defined by $(165432)$. Then, this permutation will simply rotate any coloring, meaning that the initial coloring and the coloring after the permutation acts on, will be the same.
-\item Therefore we define Burnsides Lemma: $N=\frac{1}{\vert G\vert}{\displaystyle \sum_{n\in G}\vert C_{\pi}\vert}$
-\end{itemize}
-\end{frame}
-%
-%
-\begin{frame}{Burnsides Lemma}
-\begin{itemize}
-\item The problem of using Burnsides Lemma is that the size of the invariant set $\vert C_{\pi}\vert$ must be computed with any permutation, $\pi$ , in the group G
-\item A better way is to observe that a coloring invariant under the action of a permutation in G, implies that every object permuted by one cycle of $\pi$ must have the same color
-\end{itemize}
-\end{frame}
-%
-%
-\begin{frame}{Cycle Index}
-\begin{itemize}
-\item As a generalization if $\pi$ has k disjoint cycles, then $\vert C_{\pi}\vert$ equals $m^k$.
-\item Therefore we obtain monomial $M_{\pi}(x_{1}, x_{2}, \ldots,x_{n}) = \displaystyle \prod_{i=1}^{k}x_{l_{i}}$ , where permutation $\pi$ is a product of k disjoint cycles, each $x_{l_{i}}$ represents the length of each cycle, and the i'th cycle has length $l_{i}$.
-\item For example, given $M_{(12)(34)}$ we obtain $x_{2}^{2}$.
-\item Therefore we define the cycle index as $$P(x_{1}, x_{2}, \ldots,x_{n})=\frac{1}{|G|}\sum_{\pi\in G}M_{\pi}(x_{1}, x_{2}, \ldots,x_{n})$$.
+
+\item We can use the six bead example and definition of permutations to generalize properties from equations and definitions.
+
+\item Definition: Let G be a group whose elements are the permutations on S and ${|S|} = m$. Next we let m variables $x_{1}, x_{2},...,x_{m}$ with nonnegative coefficients form the product $\beta = x_{1}^{\alpha_{1}}, x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$ for every permutation in G.
+
+\item Also let $\alpha_{i}$ represents the the number of disjoint cycles of length $i$ in the given permutation.
+
 \end{itemize}
 \end{frame}
 
-%
-%
-\begin{frame}{Polya}
+%%%
+
+\begin{frame}
 \begin{itemize}
-\item Let the set $\{y_{1}, y_{2}\}$ be a set of colors where $k_{i}$ is any color.
-\item Using the group $\{(1)(2)(3)(4), (12)(34)\}$ and the cycle index $P(x_{1},x_{2}) = \frac{1}{2}(x_{1}^{4} + x_{2}^{2})$ we obtain the polynomial $P(y_{1}+y_{2} , y_{1}^{2}+y_{2}^{2}) = y_{1}^{4} + y_{2}^{4} + 2y_{1}^{3}y_{2} + 2y_{1}^{2}y_{2}^{3} + 4y_{1}^{2}y_{2}^{2}$.
+
+\item We can obtain the cyle index of G $P_{G}(x_{1},x_{2},...,x_{m})=\frac{1}{\vert{G}\vert}\sum_{{\pi} \in G}x_{1}^{\alpha_{1}},x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$.
+
+%\item Before we generalize further, lets describe some properties of the cycle index.
+
 \end{itemize}
 \end{frame}
 
-%
-%
-\begin{frame}{Polya}
+%%%
+
+\begin{frame}
 \begin{itemize}
-\item Choosing the term $4y_{1}^{2}y_{2}^{2}$ as an example and using the permutation (12)(34) we can see that the coefficient 4 represents four ways to color a set of object using the color $y_{1}$ twice for two objects in the permutation and $y_{2}$ twice for two objects in the permutation.
+%under symmetries of rotation and reflection
+\item For example, referring back to the 6 beaded example, we get the cycle index $P_{D_{6}}(x_{1},x_{2},x_{3},x_{4},x_{5},x_{6})=\frac{1}{9}(x_{1}^{6} + x_{6}^{1} + x_{3}^{2} + x_{2}^{3} + x_{3}^{2} + x_{6}^{1} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2})$.
+
+\item Every term represent a permutation and the superscript represents the number of disjoint cycles in the permutation while the superscript represents the length of each cycle.
+
+\item $7th$ term in the polynomial represents the permutation ${\pi} = (1)(26)(35)(4)$. Therefore two cycles of length two and two cycles of length one correspond to $x = x_{2}^{2}x_{1}^{2}$.
+
+
+\end{itemize}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+
+\item The purpose of the cycle index is to determine the number of distinct colorings acted on by the group of symmetries G.
+
+\item For example, Let m equal the number of any distinct colors, we obtain the polynomial, $P_{D_{6}}(m,m,m,m)=\frac{1}{9}(m_{1}^{6} + 2m_{6}^{1} + 2m_{3}^{2} + m_{2}^{3} + 3m_{2}^{2}m_{1}^{2})$.
+
+\item Specifically, when $m=2$ we obtain $P_{D_{6}}(2,2,2,2)=$.
+
+\end{itemize}
+\end{frame}
+
+%%%% need to include slide of equivalent colorings
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+
+\item While the cycle index tells us the number of distinct objects we seek, we can abstract even further to obtain not only the number of distinct objects but also an idea of the appearance of what each object should look like.
+
+\item Polya's Enumeration Formula: Let S be a set of elements and G a group of permutations on S, where each permutation induces an equivalence relation on the colorings of S. The inventory of nonequivalent colorings of S using colors $c_{1},c_{2},...,c_{m}$ is the function $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$.
+
+\item As an observation, the k in $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$ refers to the largest cycle length.
+
+
+\end{itemize}
+\end{frame}
+
+%% To clarify how to use polya, and properties
+%% observing properties from the polya's theorem and resorting back to necklace problem.
+
+\begin{frame}
+\begin{itemize}
+
+\item Resorting back to our bead example, if we let b and w represent our two colors, then we obtain $P_{D_{4}}((b+w), (b^2+w^2), (b^3+w^3), (b^4+w^4)) = b^6 + b^5w + 3b^4w^2 + 4b^3w^3 + 3b^2w^4 + bw^5 + w^6$.
+
+\item The coefficient, of each term, $A_{i}b^{k}w^{j}$ determines the number of possible distinct colorings on the six beaded bracelet using the colors b and w, i and j times for each bead.
+
+\item for example, the third term $3b^4w^2$ corresponds to 3 possible colorings, coloring 4 bead's black and 2 bead's white.
+
 \end{itemize}
 \end{frame}
 %}}}
@@ -885,16 +919,16 @@ So
 \begin{frame}{Understanding the Different Cases Concerning Flips}
 %\includegraphics[width=\textwidth]{your-figure's-file-name}
 
-\includegraphics[width=3cm]{img/claire/newtriangle_copya.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copya}
 $x_1^6+2x_3^2+3x_1^2x_2^2$\\
-\includegraphics[width=3cm]{img/claire/newtriangle_copy1.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copy1}
 $x_1^6+2x_3^2+ 3x_2^3$\\
 \end{frame}
 
 \begin{frame}
-\includegraphics[width=3cm]{img/claire/newtriangle_copy1.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copy1}
 \mapsto
-\includegraphics[width=3cm]{img/claire/newtriangle_copyb.jpg}
+\includegraphics[width=3cm]{img/claire/newtriangle_copyb}
 \end{frame}
 
 \begin{frame}
