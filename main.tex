@@ -23,7 +23,7 @@
 \newcommand{\bracelet}[2][]{
 \ifthenelse{\isempty{#1}}{\directlua{bracelet(#2)}}{\directlua{bracelet(#2,#1)}}} % Bind latex to lua
 %}}}
-%{{{Crosses
+%{{{ Crosses
 \newcommand{\cross}{
     	\draw[thick] (-1,3) -- ++(2,0)  --
         	      ++ (0,-2) -- ++(2,0)  --
@@ -41,7 +41,14 @@
                 ++ (0,2)  -- node[fill=bg](11){11} ++(2,0) -- node[fill=bg](12){12} ++(0,2);
 }
 %}}}
-
+%{{{ Partial Ellipse
+%Borrowed from SE
+\tikzset{
+	partial ellipse/.style args={#1:#2:#3}{
+		insert path={+ (#1:#3) arc (#1:#2:#3)}
+	}
+}
+%}}}
 \title{Counting With Symmetries}
 \author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Kowalenko, Ethan Rooke, Reid Booth, Xavier Ramos}
 \institute{UC Riverside}
@@ -55,18 +62,28 @@
 
 %{{{ Introduction
 \section{Introduction}
-
 \begin{frame}{Introduction - Reid}
 \begin{columns}[T]
 \begin{column}{.48\textwidth}
 	\begin{center}
-	\begin{tikzpicture}[scale=0.5, transform shape]
-    	\bracelet{"white white white white white white"}
-    \end{tikzpicture}
-    \newline
     \begin{tikzpicture}
     	\draw (0,0) -- (5,0);
         \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (0,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (0,0) {};
+        \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (1,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (1,0) {};
+        \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (2,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (2,0) {};
+        \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (3,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (3,0) {};
+        \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (4,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (4,0) {};
+        \node[circle, fill=fg,inner sep=0pt,minimum size=.85cm] at (5,0) {};
+        \node[circle, fill=bg,inner sep=0pt,minimum size=.82cm] at (5,0) {};
+    \end{tikzpicture}
+    \newline
+	\begin{tikzpicture}[scale=0.5, transform shape]
+    	\bracelet{"white white white white white white"}
     \end{tikzpicture}
     \end{center}
 \end{column}%
@@ -109,6 +126,39 @@
 	We can count this way by making a table of bracelets and counting how many different bracelets
     can be made via rotations of that bracelet.
 \end{frame}
+
+\begin{frame}{The hard way}
+	Specifically, we want to count colorings with rotations by picking combinations of beads and treating them as equal when they're rotations of each other:
+	\begin{center}
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+    	\bracelet{"white black black black black black"}
+    \end{tikzpicture}} =
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+        \begin{scope}[shift={(9,0)}]
+        	\bracelet{"black white black black black black"}
+        \end{scope}
+    \end{tikzpicture}} =
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+        \begin{scope}[shift={(18,0)}]
+        	\bracelet{"black black white black black black"}
+        \end{scope}
+    \end{tikzpicture}} =\newline
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+        \bracelet{"black black black white black black"}
+    \end{tikzpicture}} =
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+        \begin{scope}[shift={(9,0)}]
+        	\bracelet{"black black black black white black"}
+        \end{scope}
+    \end{tikzpicture}} =
+    \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
+        \begin{scope}[shift={(18,0)}]
+        	\bracelet{"black black black black black white"}
+        \end{scope}
+    \end{tikzpicture}}
+    \end{center}
+\end{frame}
+
 \begin{frame}{The hard way}
     \begin{columns}[T]
     \begin{column}{0.48\textwidth}
@@ -118,28 +168,28 @@
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"black black black black black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 2 \\
-
+    	\end{tikzpicture}} & 2\to2 \\
+        \pause
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white white white white white"}
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"white black black black black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 12 \\
-
+    	\end{tikzpicture}} & 12\to2 \\
+        \pause
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black white white white white"}
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"white white black black black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 12 \\
+    	\end{tikzpicture}} & 12\to2 \\
 
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white black white white white"}
         	\begin{scope}[shift={(9,0)}]
         		\bracelet{"white black white black black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 12
+    	\end{tikzpicture}} & 12\to2
     \end{tabular}
     \end{column}%
 	\hfill%
@@ -150,26 +200,261 @@
         	\begin{scope}[shift={(9cm,0)}]
         		\bracelet{"white black black white black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 6 \\
+    	\end{tikzpicture}} & 6\to2 \\
 
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black white black white white"}
         	\begin{scope}[shift={(9cm,0)}]
         		\bracelet{"white white black white black black"}
         	\end{scope}
-    	\end{tikzpicture}} & 12 \\
+    	\end{tikzpicture}} & 12\to2 \\
 
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black black black white white white"}
-    	\end{tikzpicture}} & 6 \\
+    	\end{tikzpicture}} & 6\to1 \\
 
         \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
     		\bracelet{"black white black white black white"}
-    	\end{tikzpicture}} & 2
+    	\end{tikzpicture}} & 2\to1
 
         \end{tabular}
     \end{column}
     \end{columns}
+\end{frame}
+
+\begin{frame}{Flips and Colorings}
+	\begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+	\begin{itemize}
+    	\item However, the count is different if we allow for more actions than just rotations.
+        \item Another action we could add is flipping the bracelet over.
+        \item This results in different unique colorings.
+	\end{itemize}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+    	\raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black black white black white white"}
+        \end{tikzpicture}} $\neq$
+    	\raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white white black white black"}
+        \end{tikzpicture}}
+        \newline when no flips are allowed.\newline
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black black white black white white"}
+        \end{tikzpicture}} =
+    	\raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white white black white black"}
+        \end{tikzpicture}}
+        \newline when flips are allowed.\newline
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Dihedral Group and Group Actions}
+	\begin{itemize}
+    	\item We seek to generalize the types of things we can do to sets with the right symmetries.
+        \item To get an idea of these, we will look at the symmetries of an equilateral triangle.
+		\item We will let $\Delta$ denote the set of points that make up an equilateral triangle.
+		\item We want to describe the symmetries of this triangle.
+		\item We then want to think about the actions that make up these symmetries more generally.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dihedral Group and Group Actions}
+\begin{center}
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\scriptsize]
+% Draw background grid and axes
+\draw[step=1cm,gray,very thin] (-2,-2) grid (2,2);
+\draw[step=1cm,gray,very thin] (-7,-2) grid (-3,2);
+
+\draw[gray, thick, <->] (-2.2-5,0) -- (2.2-5,0); %left axes, just shifted
+\draw[gray, thick, <->] (0-5,-2.2) -- (0-5,2.2);
+\filldraw[black] (0-5,0) circle (1pt) node[anchor=west] {};
+
+\draw[gray, thick, <->] (-2.2,0) -- (2.2,0); % right axes
+\draw[gray, thick, <->] (0,-2.2) -- (0,2.2);
+\filldraw[black] (0,0) circle (1pt) node[anchor=west] {};
+
+% Draw triangle
+\draw[blue, thick] (-1*4/5-5,1.732*4/5) -- (-1*4/5-5,-1.732*4/5);
+\draw[blue, thick] (2*4/5-5,0) -- (-1*4/5-5,-1.732*4/5);
+\draw[blue, thick] (-1*4/5-5,1.732*4/5) -- (2*4/5-5,0);
+\draw[blue, thick] (-1*4/5,1.732*4/5) -- (-1*4/5,-1.732*4/5);
+\draw[blue, thick] (2*4/5,0) -- (-1*4/5,-1.732*4/5);
+\draw[blue, thick] (-1*4/5,1.732*4/5) -- (2*4/5,0);
+
+
+% -----------------------------------------------------
+\pause
+\draw[->] (0.5-5,0) arc (0:120:0.5cm);
+\draw[ultra thick, black,->] (0-5,0) -- (2-5,0);
+\draw[ultra thick, black,->] (0-5,0) -- (-1-5,1.732);
+\filldraw[black] (-0.9-5,1.732) circle (0pt) node[anchor=west] {$r^1$};
+\pause
+\draw[->] (0.6-5,0) arc (0:240:0.6cm);
+\draw[ultra thick, black,->] (0-5,0) -- (-1-5,-1.732);
+\filldraw[black] (-0.9-5,-1.732) circle (0pt) node[anchor=west] {$r^2$};
+\pause
+\draw[->] (0.7-5,0) arc (0:360:0.7cm);
+\draw[ultra thick, black,->] (0-5,0) -- (2-5,0);
+\filldraw[black] (1.4-5,0.2) circle (0pt) node[anchor=west] {$r^3=e$};
+\pause
+% -----------------------------------------------------
+\draw[ultra thick, black,<->] (-2,0) -- (2,0);
+\filldraw[black] (1.4,0.2) circle (0pt) node[anchor=west] {$f^1$};
+\draw[rotate=270, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+\pause
+\draw[ultra thick, black,<->] (1,1.732) -- (-1,-1.732);
+\filldraw[black] (-0.9,-1.732) circle (0pt) node[anchor=west] {$f^2$};
+\draw[rotate=150, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+\pause
+\draw[ultra thick, black,<->] (1,-1.732) -- (-1,1.732);
+\filldraw[black] (-0.9,1.732) circle (0pt) node[anchor=west] {$f^3$};
+\draw[rotate=30, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+
+
+
+\end{tikzpicture}
+
+\end{center}
+\end{frame}
+\begin{frame}{Dihedral Group and Group Actions}
+	\begin{center}
+		\begin{tikzpicture}
+		\tikzstyle{every node}=[font=\scriptsize]
+		% Draw background grid and axes
+		\draw[step=1cm,gray,very thin] (-2,-2) grid (2,2);
+		\draw[step=1cm,gray,very thin] (-7,-2) grid (-3,2);
+
+		\draw[gray, thick, <->] (-2.2-5,0) -- (2.2-5,0); %left axes, just shifted
+		\draw[gray, thick, <->] (0-5,-2.2) -- (0-5,2.2);
+		\filldraw[black] (0-5,0) circle (1pt) node[anchor=west] {};
+
+		\draw[gray, thick, <->] (-2.2,0) -- (2.2,0); % right axes
+		\draw[gray, thick, <->] (0,-2.2) -- (0,2.2);
+		\filldraw[black] (0,0) circle (1pt) node[anchor=west] {};
+
+		% Draw triangle
+		\draw[blue, thick] (-1*4/5-5,1.732*4/5) -- (-1*4/5-5,-1.732*4/5);
+		\draw[blue, thick] (2*4/5-5,0) -- (-1*4/5-5,-1.732*4/5);
+		\draw[blue, thick] (-1*4/5-5,1.732*4/5) -- (2*4/5-5,0);
+		\draw[blue, thick] (-1*4/5,1.732*4/5) -- (-1*4/5,-1.732*4/5);
+		\draw[blue, thick] (2*4/5,0) -- (-1*4/5,-1.732*4/5);
+		\draw[blue, thick] (-1*4/5,1.732*4/5) -- (2*4/5,0);
+
+
+		% -----------------------------------------------------
+
+		\draw[->] (0.5-5,0) arc (0:120:0.5cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (2-5,0);
+		\draw[ultra thick, black,->] (0-5,0) -- (-1-5,1.732);
+		\filldraw[black] (-0.9-5,1.732) circle (0pt) node[anchor=west] {$r^1$};
+
+		\draw[->] (0.6-5,0) arc (0:240:0.6cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (-1-5,-1.732);
+		\filldraw[black] (-0.9-5,-1.732) circle (0pt) node[anchor=west] {$r^2$};
+
+		\draw[->] (0.7-5,0) arc (0:360:0.7cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (2-5,0);
+		\filldraw[black] (1.4-5,0.2) circle (0pt) node[anchor=west] {$r^3=e$};
+
+		% -----------------------------------------------------
+		\draw[ultra thick, black,<->] (-2,0) -- (2,0);
+		\filldraw[black] (1.4,0.2) circle (0pt) node[anchor=west] {$f^1$};
+		\draw[rotate=270, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+		\draw[ultra thick, black,<->] (1,1.732) -- (-1,-1.732);
+		\filldraw[black] (-0.9,-1.732) circle (0pt) node[anchor=west] {$f^2$};
+		\draw[rotate=150, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+		\draw[ultra thick, black,<->] (1,-1.732) -- (-1,1.732);
+		\filldraw[black] (-0.9,1.732) circle (0pt) node[anchor=west] {$f^3$};
+		\draw[rotate=30, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+
+
+
+		\end{tikzpicture}
+
+	\end{center}
+	$D_3=\{e,r^1,r^2,f^1,f^2,f^3\}$ is the dihedral group on $3$ elements.
+
+	We say $D_3$ acts on $\Delta$, or $D_3\circlearrowright\Delta$.
+\end{frame}
+
+\begin{frame}{$D_4$}
+	\begin{center}
+		\begin{tikzpicture}
+		\tikzstyle{every node}=[font=\scriptsize]
+		% Draw background grid and axes
+		\draw[step=1cm,gray,very thin] (-2,-2) grid (2,2);
+		\draw[step=1cm,gray,very thin] (-7,-2) grid (-3,2);
+
+		\draw[gray, thick, <->] (-2.2-5,0) -- (2.2-5,0); %left axes, just shifted
+		\draw[gray, thick, <->] (0-5,-2.2) -- (0-5,2.2);
+		\filldraw[black] (0-5,0) circle (1pt) node[anchor=west] {};
+
+		\draw[gray, thick, <->] (-2.2,0) -- (2.2,0); % right axes
+		\draw[gray, thick, <->] (0,-2.2) -- (0,2.2);
+		\filldraw[black] (0,0) circle (1pt) node[anchor=west] {};
+
+		% Draw triangle
+		\draw[blue, thick] (-2*4/5-5,2*4/5) -- (-2*4/5-5,-2*4/5);
+		\draw[blue, thick] (2*4/5-5,-2*4/5) -- (-2*4/5-5,-2*4/5);
+		\draw[blue, thick] (-2*4/5-5,2*4/5) -- (2*4/5-5,2*4/5);
+		\draw[blue, thick] (2*4/5-5,-2*4/5) -- (2*4/5-5,2*4/5);
+		\draw[blue, thick] (-2*4/5,2*4/5) -- (-2*4/5,-2*4/5);
+		\draw[blue, thick] (2*4/5,-2*4/5) -- (-2*4/5,-2*4/5);
+		\draw[blue, thick] (-2*4/5,2*4/5) -- (2*4/5,2*4/5);
+		\draw[blue, thick] (2*4/5,-2*4/5) -- (2*4/5,2*4/5);
+
+
+		% -----------------------------------------------------
+
+		\draw[->] (0.5-5,0) arc (0:90:0.5cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (-5,2);
+		\filldraw[black] (0.1-5,1.8) circle (0pt) node[anchor=west] {$r^1$};
+
+		\draw[->] (0.6-5,0) arc (0:180:0.6cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (-2-5,0);
+		\filldraw[black] (-2-5,0.3) circle (0pt) node[anchor=west] {$r^2$};
+
+		\draw[->] (0.7-5,0) arc (0:270:0.7cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (-5,-2);
+		\filldraw[black] (0.1-5,-1.8) circle (0pt) node[anchor=west] {$r^3$};
+
+		\draw[->] (0.8-5,0) arc (0:360:0.8cm);
+		\draw[ultra thick, black,->] (0-5,0) -- (2-5,0);
+		\filldraw[black] (1.5-5,0.3) circle (0pt) node[anchor=west] {$r^4=e$};
+
+		% -----------------------------------------------------
+		\draw[ultra thick, black,<->] (-2,0) -- (2,0);
+		\filldraw[black] (1.6,0.3) circle (0pt) node[anchor=west] {$f^1$};
+		\draw[rotate=270, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+		\draw[ultra thick, black,<->] (-1.414,-1.414) -- (1.414,1.414);
+		\filldraw[black] (1.414+0.1,1.414) circle (0pt) node[anchor=west] {$f^2$};
+		\draw[rotate=315, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+		\draw[ultra thick, black,<->] (0,-2) -- (0,2);
+		\filldraw[black] (0.1,1.8) circle (0pt) node[anchor=west] {$f^3$};
+		\draw[rotate=0, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+		\draw[ultra thick, black,<->] (-1.414,1.414) -- (1.414,-1.414);
+		\filldraw[black] (-1.414-0.65,1.414) circle (0pt) node[anchor=west] {$f^4$};
+		\draw[rotate=45, gray, thin, -latex] (0,1) [partial ellipse=0:270:0.3cm and 0.1cm];
+
+
+
+
+		\end{tikzpicture}
+
+	\end{center}
+	$D_4=\{e,r^1,r^2,r^3,f^1,f^2,f^3,f^4\}$ is the dihedral group on $4$ elements.
+
+	This generalizes to $D_n$, the dihedral group on $n$ elements: it's a group of $2n$ elements with $n$ rotations and $n$ flips.
 \end{frame}
 
 \begin{frame}{The Goal}
@@ -178,6 +463,7 @@
     answering coloring questions like these where symmetry
     is crucial
 \end{frame}
+
 %}}}
 %{{{ Polya Build Up
 \section{Polya Build up - Ethan}
