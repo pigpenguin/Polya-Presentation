@@ -726,24 +726,136 @@
 \end{frame}
 %}}}
 %{{{ Ambers section
+\section{Abstracting Polya from the cycle index}
+
+\begin{frame}
+\begin{itemize}
+
+\item We can use the six bead example and definition of permutations to generalize properties from equations and definitions.
+
+\item Definition: Let G be a group whose elements are the permutations on S and ${|S|} = m$. Next we let m variables $x_{1}, x_{2},...,x_{m}$ with nonnegative coefficients form the product $\beta = x_{1}^{\alpha_{1}}, x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$ for every permutation in G.
+
+\item Also let $\alpha_{i}$ represents the the number of disjoint cycles of length $i$ in the given permutation.
+
+\end{itemize}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+
+\item We can obtain the cyle index of G $P_{G}(x_{1},x_{2},...,x_{m})=\frac{1}{\vert{G}\vert}\sum_{{\pi} \in G}x_{1}^{\alpha_{1}},x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$.
+
+%\item Before we generalize further, lets describe some properties of the cycle index.
+
+\end{itemize}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+%under symmetries of rotation and reflection
+\item For example, referring back to the 6 beaded example, we get the cycle index $P_{D_{6}}(x_{1},x_{2},x_{3},x_{4},x_{5},x_{6})=\frac{1}{9}(x_{1}^{6} + x_{6}^{1} + x_{3}^{2} + x_{2}^{3} + x_{3}^{2} + x_{6}^{1} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2})$.
+
+\item Every term represent a permutation and the superscript represents the number of disjoint cycles in the permutation while the superscript represents the length of each cycle.
+
+\item $7th$ term in the polynomial represents the permutation ${\pi} = (1)(26)(35)(4)$. Therefore two cycles of length two and two cycles of length one correspond to $x = x_{2}^{2}x_{1}^{2}$.
+
+
+\end{itemize}
+\end{frame}
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+
+\item The purpose of the cycle index is to determine the number of distinct colorings acted on by the group of symmetries G.
+
+\item For example, Let m equal the number of any distinct colors, we obtain the polynomial, $P_{D_{6}}(m,m,m,m)=\frac{1}{9}(m_{1}^{6} + 2m_{6}^{1} + 2m_{3}^{2} + m_{2}^{3} + 3m_{2}^{2}m_{1}^{2})$.
+
+\item Specifically, when $m=2$ we obtain $P_{D_{6}}(2,2,2,2)=$.
+
+\end{itemize}
+\end{frame}
+
+%%%% need to include slide of equivalent colorings
+
+%%%
+
+\begin{frame}
+\begin{itemize}
+
+\item While the cycle index tells us the number of distinct objects we seek, we can abstract even further to obtain not only the number of distinct objects but also an idea of the appearance of what each object should look like.
+
+\item Polya's Enumeration Formula: Let S be a set of elements and G a group of permutations on S, where each permutation induces an equivalence relation on the colorings of S. The inventory of nonequivalent colorings of S using colors $c_{1},c_{2},...,c_{m}$ is the function $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$.
+
+\item As an observation, the k in $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$ refers to the largest cycle length.
+
+
+\end{itemize}
+\end{frame}
+
+%% To clarify how to use polya, and properties
+%% observing properties from the polya's theorem and resorting back to necklace problem.
+
+\begin{frame}
+\begin{itemize}
+
+\item Resorting back to our bead example, if we let b and w represent our two colors, then we obtain $P_{D_{4}}((b+w), (b^2+w^2), (b^3+w^3), (b^4+w^4)) = b^6 + b^5w + 3b^4w^2 + 4b^3w^3 + 3b^2w^4 + bw^5 + w^6$.
+
+\item The coefficient, of each term, $A_{i}b^{k}w^{j}$ determines the number of possible distinct colorings on the six beaded bracelet using the colors b and w, i and j times for each bead.
+
+\item for example, the third term $3b^4w^2$ corresponds to 3 possible colorings, coloring 4 bead's black and 2 bead's white.
+
+\end{itemize}
+\end{frame}
+
+
 \section{Using What We've Learned with an Example! - Amber}
 
 \begin{frame}{An Application in Industry}
-	Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross. To symbolize the purpose of the organization and emphasize its international constituency, its board of directors decides that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow, with an equal number of lines of each color.
+
+	%Consider the example:
+%     	Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross. To symbolize the purpose of the organization and emphasize its international constituency, its board of directors decides that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow, with an equal number of lines of each color.
+\begin{itemize}
+\item Suppose a medical relief agency plans to design a symbol for their organization in the shape of a regular cross.
+\item They decide that the cross should be white in color, with each of the twelve line segments outlining the cross colored red, green, blue, or yellow.
+\item And should have an equal number of lines of each color.
+\end{itemize}
 \end{frame}
 
 \begin{frame}{An Application in Industry}
+%However, as we now know, we have to consider the symmetries of the regular cross (rotations, flips that maintain the orientation of the polygon), so that we don't double-count essentially equivalent colorings.
 	How many different ways are there to design the symbol, taking into account rotations and flips?
-
 	\begin{center}
-	   \begin{tikzpicture}
-       \cross
+	\begin{tikzpicture}
+    \cross
     \end{tikzpicture}
-  \end{center}
+\end{center}
 
 \end{frame}
 
 \begin{frame}{An Application in Industry}
+%To create the monomial for the regular cross, we'll consider the actions that will not alter the shape.
+	First, WLOG we can number the sides of the cross as so:
+    \begin{center}
+	\begin{tikzpicture}
+    \numberedcross
+    \end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}{An Application in Industry}
+  % I don't know which order you want to do these in, but I changed so it's
+  % Now easy to change the order.
+  % The order they are in the code is the order they will render
+  % So just move the blocks wrapped in {{{ }}} to change the order
+  % of the diagrams and move the \items to change the order of the list
+  % just make sure the \setcounter command is the first thing in both
+  % the list and the picture
   \begin{columns}
     \begin{column}{.6\textwidth}
     	   \begin{tikzpicture}
@@ -801,24 +913,66 @@
     \end{column}%
   \end{columns}
 \end{frame}
+% \begin{frame}{An Application in Industry}
+% The identity, the rotations...
+% \begin{itemize}
+% 	\item Identity:
+%     	\begin{itemize}
+%     	\item cycle notation: $(1)(2)(3)(4)(5)(6)(7)(8)(9)(10)(11)(12)$
+%     	\item monomial: $x_1^{12}$
+%     	\item number of ways this occurs: $1$
+%     	\end{itemize}
+%     \item $90\deg$ rotation:
+%     	\begin{itemize}
+%     	\item cycle notation: $(1,4,7,10)(2,5,8,11)(3,6,9,12)$
+%     	\item monomial: $x_4^{3}$
+%     	\item number of ways this occurs: $2$
+%     	\end{itemize}
+%     \item $180\deg$ rotation:
+%     	\begin{itemize}
+%     	\item cycle notation: $(1,7)(2,8)(3,9)(4,10)(5,11)(6,12)$
+%     	\item monomial: $x_2^{6}$
+%     	\item number of ways this occurs: $1$
+%     	\end{itemize}
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{An Application in Industry}
+% And the flips...
+% \begin{itemize}
+% \item Diagonal axis:
+%     	\begin{itemize}
+%     	\item cycle notation: $(1,10)(2,9)(3,8)(4,7)(5,6)(11,12)$
+%     	\item monomial: $x_2^{6}$
+%     	\item number of ways this occurs: $2$
+%     	\end{itemize}
+% \item Vertical/Horizontal axis:
+%     	\begin{itemize}
+%     	\item cycle notation: $(1,7)(2,6)(3,5)(4)(8,12)(9,11)(10)$
+%     	\item monomial: $x_1^{2} x_2^5$
+%     	\item number of ways this occurs: $2$
+%     	\end{itemize}
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}{An Application in Industry}
-
+%We build the cycle index from the monomials we obtained from the symmetries with the coefficients being the number of ways that action can occur, and the outside coefficient being 1 over the size of the group of symmetries for this problem.
 From this, we get the cycle index:\\
 %WRITE THIS ON THE BOARD:
 \[P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)\]
-We want the coefficient of $r^3g^3b^3y^3$, so we look at
-$x_1^{12},x_4^{3},x_2^{6},x_1^{2} x_2^5$ individually.\\
-(where $r$ = red, $g$ = green, $b$ = blue, $y$ = yellow)
+
+We want the coefficient of $r^3g^3b^3y^3$\\
+(where $r$ = red, $g$ = green, $b$ = blue, $y$ = yellow),\\
+
+so we look at the terms $x_1^{12}$, $x_4^{3}$, $x_2^{6}$, $x_1^{2}x_2^5$ individually.\\
 \end{frame}
 
 \begin{frame}{An Application in Industry}
-Using Pólya's Enumeration Theorem, plugging in the colors $r,g,b,y$:\\
-\begin{align*}
-x_1 &= r+g+b+y\\
-x_2 &=r^2+g^2+b^2+y^2\\
-x_4 &=r^4+g^4+b^4+y^4\\
-\end{align*}
+\begin{itemize}
+\item $P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)$
+\end{itemize}
+Using Pólya's Enumeration Theorem, we'll plug in the colors $r,g,b,y$:\\
+\[x_k = r^k + g^k + b^k + y^k\]
 So looking at each term individually:
 \begin{align*}
 x_1^{12} &= (r+g+b+y)^{12}\\
@@ -826,33 +980,43 @@ x_4^3 &=(r^4+g^4+b^4+y^4)^3\\
 x_2^6 &=(r^2+g^2+b^2+y^2)^6\\
 x_1^{2}x_2^5 &= (r+g+b+y)^2(r^2+g^2+b^2+y^2)^5\\
 \end{align*}
-%x_4^3 term will not give any r^3b^3g^3y^3 term because only even powers
-%also none b/c (r^2+g^2+b^2+y^2)^5 has all terms with at least one power \ge 4
-%eg. r^2g^2b^2y^2r^2 = r^4g^2b^2y^2
-%we're looking for the coefficient of $r^3g^3b^3y^3$
+%Using Pólya's Thm we make equations for each term in the cycle index in terms  of the 4 colors.
+%At this point, it's just computer work to multiply these all out.
 \end{frame}
 
 \begin{frame}{An Application in Industry}
+%However, we only care about the coefficient on the term r^3g^3b^3y^3 because that will give us what we want: the number of ways to color the cross' edges with 3 of each colors red, green, blue, yellow.
 \begin{itemize}
 \item $P = \frac{1}{8}(x_1^{12}+2x_4^3 +3x_2^6 +2x_1^2 x_2^5)$
 \end{itemize}
-So the ways to get the coefficient for $r^3g^3b^3y^3$ from $P$ are...\\
+So the coefficient for the term $r^3g^3b^3y^3$ from $P$ will be...\\
 \begin{align*}
-&\frac{1}{8}{{12}\choose{3,3,3,3}}+\frac{1}{4}(0) + \frac{3}{8}(0) + \frac{1}{4}(0)
+&\frac{1}{8}{{12}\choose{3,3,3,3}}
 \end{align*}
 $=46200$\\
 \vspace{40pt}
-Therefore, we have found that there are 46,200 different ways to design the symbol.
+Therefore, we have found that there are 46,200 different ways to design the symbol!
 \end{frame}
 
 \begin{frame}{An Interesting Find}
 \begin{itemize}
 \item While working on this example, we discovered that the group of symmetries for the edges of a regular cross is actually the dihedral group $D_4$, like that of a square.
-%\item $D_4$ is the dihedral group for a regular polygon with 4 sides.
-%\item The dihedral group $D_n$ is the group of symmetries for a regular polygon with $n$ sides, including reflections as well as rotations.
 \item This is interesting! So we started looking into the effects of dihedral groups acting on polygons.
 \end{itemize}
 \end{frame}
+
+%This slide is purely for notes that could be used in the dihedral group section:
+
+%\begin{frame}{Dihedral Groups Acting on Polygons}
+%Our findings:
+%\begin{itemize}
+%\item the action matters $\rightarrow$ how to embed/cut the polygon
+%\item different ambient groups change things $\rightarrow$ not ambient under anything?
+%\item $D_k$ formula for when k is prime
+%\item what doesn't work: even k's because rotations get messed up due to subgroups of cyclic groups, ...?
+%\end{itemize}
+%paraphrasing; will elaborate further...
+%\end{frame}
 %}}}
 %{{{ Claires Section
 %This slide is purely for notes that could be used in the dihedral group section:
