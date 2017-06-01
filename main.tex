@@ -627,6 +627,42 @@
         	\bracelet[true]{"black black black white black black"}
         	\end{scope}
 
+
+            %\node<3-> at (0,0) (1) {1};
+            %\node<3-> at (0,-1) (2) {2};
+            %\node<3-> at (0,-2) (3) {3};
+            %\node<3-> at (0,-3) (4) {4};
+            %\node<3-> at (0,-4) (5) {5};
+            %\node<3-> at (0,-5) (6) {6};
+
+            %\node<3-> at (-1,-4) (1') {\Huge 1};
+            %\node<3-> at (-1,-5) (2') {\Huge 2};
+            %\node<3-> at (-1,-6) (3') {\Huge 3};
+            %\node<3-> at (-1,-7) (4') {\Huge 4};
+            %\node<3-> at (-1,-8) (5') {\Huge 5};
+            %\node<3-> at (-1,-9) (6') {\Huge 6};
+
+            %\node<3-> at (1,-6) (b) {\Huge b};
+            %\node<3-> at (1,-7) (w) {\Huge w};
+
+            %{{{ (12)(34)
+            %\draw<3->[thick, ->] (1) to (4');
+            %\draw<3->[thick, ->] (2) to (5');
+            %\draw<3->[thick, ->] (3) to (6');
+            %\draw<3->[thick, ->] (4) to (1');
+            %\draw<3->[thick, ->] (5) to (2');
+            %\draw<3->[thick, ->] (6) to (3');
+            %}}}
+
+            %{{{ Coloring 1
+            %\draw<3->[thick,->] (1') to (w);
+          %  %\draw<3->[thick,->] (2') to (b);
+            %\draw<3->[thick,->] (3') to (b);
+            %\draw<3->[thick,->] (4') to (b);
+            %\draw<3->[thick,->] (5') to (b);
+            %\draw<3->[thick,->] (6') to (b);
+            %}}}
+
     	\end{tikzpicture}
     \end{center}
 \end{frame}
@@ -808,7 +844,21 @@
 
 \pause
 \item for example, the third term $3b^4w^2$ corresponds to 3 possible colorings, coloring 4 bead's black and 2 bead's white.
+\vspace{2em}
+\begin{center}
+  \begin{tikzpicture}[scale=0.3, transform shape]
+    \bracelet{"white white black black black black"}
 
+    \begin{scope}[shift={(12,0)}]
+      \bracelet{"white black white black black black"}
+    \end{scope}
+
+    \begin{scope}[shift={(24,0)}]
+      \bracelet{"white black black white black black"}
+    \end{scope}
+
+  \end{tikzpicture}
+\end{center}
 \end{itemize}
 \end{frame}
 
