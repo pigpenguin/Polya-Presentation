@@ -12,15 +12,14 @@
 
 
 \usepackage[english]{babel}
-\usepackage[utf8x]{inputenc}
 \usepackage{xifthen} % If statements in tex are trash
 \usepackage{tikz}    % Allows us to draw diagrams
 \usepackage{gensymb} % Degree symbol
-\usepackage{amsmath}
-\usepackage{graphicx}
+\usepackage{amsmath} % More better math
+\usepackage{graphicx}% More better graphicx
 \graphicspath{{./img/claire/}}
-\usepackage{lipsum,lmodern}
-\usepackage[most]{tcolorbox}%boxes
+\usepackage{lipsum,lmodern} % Iunno
+\usepackage[most]{tcolorbox}% Boxes
 
 %{{{ Bracelets
 \directlua{dofile("bracelet.lua")}                                                % Import lua code
@@ -53,6 +52,7 @@
 	}
 }
 %}}}
+
 \title{Counting With Symmetries}
 \author{Amber McKeough, Carlos Lira, Clarisse Bonnand, Ethan Rooke, Reid Booth}
 \institute{UC Riverside}
@@ -66,7 +66,8 @@
 
 %{{{ Introduction
 \section{Introduction}
-\begin{frame}{Introduction}
+
+\begin{frame}{Introduction - Reid}
 \begin{columns}[T]
 \begin{column}{.48\textwidth}
 	\begin{center}
@@ -127,11 +128,6 @@
 \end{frame}
 
 \begin{frame}{The hard way}
-	We can count this way by making a table of bracelets and counting how many different bracelets
-    can be made via rotations of that bracelet.
-\end{frame}
-
-\begin{frame}{The hard way}
 	Specifically, we want to count colorings with rotations by picking combinations of beads and treating them as equal when they're rotations of each other:
 	\begin{center}
     \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.30, transform shape]
@@ -161,6 +157,11 @@
         \end{scope}
     \end{tikzpicture}}
     \end{center}
+\end{frame}
+
+\begin{frame}{The hard way}
+	We can count this way by making a table of bracelets and counting how many different bracelets
+    can be made via rotations of that bracelet.
 \end{frame}
 
 \begin{frame}{The hard way}
