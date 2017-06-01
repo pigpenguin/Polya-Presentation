@@ -16,7 +16,7 @@
 \usepackage{xifthen} % If statements in tex are trash
 \usepackage{tikz}    % Allows us to draw diagrams
 \usepackage{gensymb} % Degree symbol
-
+\usepackage{amsmath}
 \usepackage{graphicx}
 \graphicspath{{./img/claire/}}
 \usepackage{lipsum,lmodern}
@@ -919,7 +919,7 @@ Therefore, we have found that there are 46,200 different ways to design the symb
 	So we just saw an example which used Polya's Theorem to color the twelve sides of a cross.\\
 \pause
 	We observed that this twelve sided figure produced a cycle index similar to that of a square (the $D_4$ 	dihedral group).\\
-
+\pause
 	\begin{table}
 		\centering
 		\begin{tabular}{l|c|c|c|c|c}
@@ -952,7 +952,7 @@ Therefore, we have found that there are 46,200 different ways to design the symb
     \item In the Cross example we had k=4 and n=3.
     \end{itemize}
 \pause
-    \item The creation of a formula is dependent upon the embedding.
+    \item The creation of a formula is dependent upon the action.
     \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1110,19 +1110,73 @@ So for any $D_n$ acting on a $nk-gon$ we can produce the flips using cases:\\
 		The monomials for $C_k\circlearrowright k$-gon:\\
 		\begin{center}
 			$\sum\limits_{m=1}^kX_{k/gcd(m,k)}^{gcd(m,k)}$\\
+            $=\sum\limits_{m|k}$ \varphi$(m)X_m^{nk/m}$ \\
 		\end{center}
 	\end{tcolorbox}
+    Recall \varphi, the Euler-Phi Function:
+    \begin{center}
+    \varphi:$\mathbb{N} \mapsto \mathbb{N}$\\
+			\varphi($m$)= the number of positive integers less than $m$ which are co-prime to $m$.
+    \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-Recall:\\
-	\begin{tcolorbox}[colback=yellow!10!white,colframe=blue!75!black,title=The Euler Phi Function]
-    	\begin{center}
-			\varphi:$\mathbb{N} \mapsto \mathbb{N}$\\
-			\varphi($m$)= the number of positive integers less than $m$ which are co-prime to $m$.
-        \end{center}
-	\end{tcolorbox}
+\begin{frame}{Result}
+ \begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title= General Formula $D_k \circlearrowright$ $nk$-gon]
+ 			\[\frac{1}{2k}\bigg( \sum\limits_{m|k} \varphi(m)X_m^{nk/m} +
+\begin{cases}
+k/2x_1^2x_2^{(kn-2)/2}+k/2x_2^{kn/2} & \text{n odd, k even (V-V flips + E-E flips)}\\
+kx_1^1x_2^{(kn-1)/2} & \text{n odd, (V-E flip)} \\
+kx_1^2x_2^{(kn-2)/2} & \text{n even, (E-E flip)}\\
+kx_1^2x_2^{(kn)/2} & \text{n even, (V-V flip)}
+\end{cases}\bigg)\]
+         \end{tcolorbox}
+
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}{Result}
+%\begin{block}{General Formula $D_k \circlearrowright$ $nk$-gon}
+% 			\[\frac{1}{2k}\bigg( \sum\limits_{m|k} \varphi(m)X_m^{nk/m} +
+%\begin{cases}
+%k/2x_1^2x_2^{(kn-2)/2}+k/2x_2^{kn/2} & \text{n odd, k even (V-V flips + E-E flips)}\\
+%kx_1^1x_2^{(kn-1)/2} & \text{n odd, (V-E flip)} \\
+%kx_1^2x_2^{(kn-2)/2} & \text{n even, (E-E flip)}\\
+%kx_1^2x_2^{(kn)/2} & \text{n even, (V-V flip)}
+%\end{cases}\bigg)\]
+%         \end{block}
+
+%\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{Further Questions to Explore...}
+\begin{itemize}
+\item Reflection groups of a Tetrahedron and a Cube, and making cycle indexes for them.
+	\begin{itemize}
+	\item the reflections of symmetries can be viewed  when drawn in 2-D
+	\end{itemize}
+\item Applications in Graph Theory, such as counting the number of unlabeled cubic graphs.
+\item Applications of Pólya Theory on chemical isomers.
+\begin{itemize}
+	\item chemical compounds, instead of colors
+	\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Acknowledgements}
+We would like to thank:
+\begin{itemize}
+\item Dr. Chari
+\item Dr. Costello
+\item Ethan Kowalenko
+\item Xavier Ramos
+\end{itemize}
+\end{frame}
+
+\begin{frame}[standout]
+\centering
+Questions?
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \begin{table}
@@ -1159,7 +1213,7 @@ $x_1^6$ &
 \textcolor{blue}{$2x_6^1$}&
 \\\hline
 12 &
-$x_1^12$&
+$x_1^{12}$&
 \textcolor{orange}{$x_2^6$} &
 \textcolor{green}{$2x_3^4$} &
 \textcolor{purple}{$2x_4^3$}&
@@ -1168,61 +1222,6 @@ $x_1^12$&
 \\\hline
 \end{tabular}}
 \end{table}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-    \begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title=Theorem:Rotation Monomials]
-    	The monomials for $C_k\circlearrowright nk$-gon:\\
-    	\begin{center}
-			$\sum\limits_{m|k}$ \varphi$(m)X_m^{nk/m}$ \\
-        \end{center}
-    \end{tcolorbox}
-
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}{Result}
-\resizebox{\textwidth}{!}{
- \begin{tcolorbox}[colback=yellow!10!white,colframe=red!75!black,title= General Formula $D_k \circlearrowright$ $nk$-gon]
- 			\[\frac{1}{2k}\bigg( \sum\limits_{m|k} \varphi(m)X_m^{nk/m} +
-\begin{cases}
-k/2x_1^2x_2^{(kn-2)/2}+k/2x_2^{kn/2} & \text{n odd, k even (V-V flips + E-E flips)}\\
-kx_1^1x_2^{(kn-1)/2} & \text{n odd, (V-E flip)} \\
-kx_1^2x_2^{(kn-2)/2} & \text{n even, (E-E flip)}\\
-kx_1^2x_2^{(kn)/2} & \text{n even, (V-V flip)}
-\end{cases}\bigg)\]
-         \end{tcolorbox}
-         }
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}{Further Questions to Explore...}
-\begin{itemize}
-\item Reflection groups of a Tetrahedron and a Cube, and making cycle indexes for them.
-	\begin{itemize}
-	\item the reflections of symmetries can be viewed  when drawn in 2-D
-	\end{itemize}
-\item Applications in Graph Theory, such as counting the number of unlabeled cubic graphs.
-\item Applications of Pólya Theory on chemical isomers.
-\begin{itemize}
-	\item chemical compounds, instead of colors
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Acknowledgements}
-We would like to thank:
-\begin{itemize}
-\item Dr. Chari
-\item Dr. Costello
-\item Ethan Kowalenko
-\item Xavier Ramos
-\end{itemize}
-\end{frame}
-
-\begin{frame}[standout]
-\centering
-Questions?
 \end{frame}
 %}}}
 
