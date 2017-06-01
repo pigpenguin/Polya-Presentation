@@ -637,92 +637,179 @@
 \end{frame}
 %}}}
 %{{{ How to use polya
-\section{Abstracting Polya from the cycle index}
+\section{Polya Theorem}
 
 \begin{frame}
 \begin{itemize}
 
-\item We can use the six bead example and definition of permutations to generalize properties from equations and definitions.
+\pause
+\item Definition: Let G be a group of symmetries on set $S$ where ${|S|} = n$.
 
-\item Definition: Let G be a group whose elements are the permutations on S and ${|S|} = m$. Next we let m variables $x_{1}, x_{2},...,x_{m}$ with nonnegative coefficients form the product $\beta = x_{1}^{\alpha_{1}}, x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$ for every permutation in G.
+\pause
+\item Next define an arbitrary variable $x_{i}$.
 
-\item Also let $\alpha_{i}$ represents the the number of disjoint cycles of length $i$ in the given permutation.
+\pause
+\item Let $\alpha_{i}$ represent the number of disjoint cycles of length i corresponding to a given permutation in G.
+
+\pause
+\item For any ${\pi}$, we define $\beta_{\pi}=\displaystyle\prod_{i=1}^{n} x_{i}^{\alpha_{i}}$. We Observe, $\beta_{\pi}$ encodes all the info about the number of cycles and lengths of cycles of ${\pi}$.
 
 \end{itemize}
 \end{frame}
 
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \begin{itemize}
 
-\item We can obtain the cyle index of G $P_{G}(x_{1},x_{2},...,x_{m})=\frac{1}{\vert{G}\vert}\sum_{{\pi} \in G}x_{1}^{\alpha_{1}},x_{2}^{\alpha_{2}},...,x_{m}^{\alpha_{m}}$.
-
-%\item Before we generalize further, lets describe some properties of the cycle index.
+\item Define cycle index of G as $P_{G}(x_{1},x_{2},...,x_{n})=\frac{1}{\vert{G}\vert}\displaystyle\sum_{{\pi} \in G}{\beta_{\pi}}$.
 
 \end{itemize}
 \end{frame}
 
-%%%
-
-\begin{frame}
-\begin{itemize}
-%under symmetries of rotation and reflection
-\item For example, referring back to the 6 beaded example, we get the cycle index $P_{D_{6}}(x_{1},x_{2},x_{3},x_{4},x_{5},x_{6})=\frac{1}{9}(x_{1}^{6} + x_{6}^{1} + x_{3}^{2} + x_{2}^{3} + x_{3}^{2} + x_{6}^{1} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2} + x_{2}^{2}x_{1}^{2})$.
-
-\item Every term represent a permutation and the superscript represents the number of disjoint cycles in the permutation while the superscript represents the length of each cycle.
-
-\item $7th$ term in the polynomial represents the permutation ${\pi} = (1)(26)(35)(4)$. Therefore two cycles of length two and two cycles of length one correspond to $x = x_{2}^{2}x_{1}^{2}$.
-
-
-\end{itemize}
-\end{frame}
-
-%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \begin{itemize}
 
-\item The purpose of the cycle index is to determine the number of distinct colorings acted on by the group of symmetries G.
+\pause
+\item Bracelet with 6 beads, $P_{C_{6}}(x_{1},x_{2},x_{3},x_{4},x_{5},x_{6})=\frac{1}{6}(x_{1}^{6} + x_{6}^{1} + x_{3}^{2} + x_{2}^{3} + x_{3}^{2} + x_{6}^{1})$.
 
-\item For example, Let m equal the number of any distinct colors, we obtain the polynomial, $P_{D_{6}}(m,m,m,m)=\frac{1}{9}(m_{1}^{6} + 2m_{6}^{1} + 2m_{3}^{2} + m_{2}^{3} + 3m_{2}^{2}m_{1}^{2})$.
+\pause
+\item Every term represents a permutation.
 
-\item Specifically, when $m=2$ we obtain $P_{D_{6}}(2,2,2,2)=$.
-
-\end{itemize}
-\end{frame}
-
-%%%% need to include slide of equivalent colorings
-
-%%%
-
-\begin{frame}
-\begin{itemize}
-
-\item While the cycle index tells us the number of distinct objects we seek, we can abstract even further to obtain not only the number of distinct objects but also an idea of the appearance of what each object should look like.
-
-\item Polya's Enumeration Formula: Let S be a set of elements and G a group of permutations on S, where each permutation induces an equivalence relation on the colorings of S. The inventory of nonequivalent colorings of S using colors $c_{1},c_{2},...,c_{m}$ is the function $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$.
-
-\item As an observation, the k in $P_{G}(\sum_{j=1}^{m}c_{j},\sum_{j=1}^{m}c_{j}^{2},...,\sum_{j=1}^{m}c_{j}^{k})$ refers to the largest cycle length.
+\pause
+\item The $3rd$ term $x_{3}^{2}$ corresponding to the permutation ${\pi} = (153)(264)$ has two cycles of length three.
 
 
 \end{itemize}
 \end{frame}
 
-%% To clarify how to use polya, and properties
-%% observing properties from the polya's theorem and resorting back to necklace problem.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
 \begin{itemize}
 
-\item Resorting back to our bead example, if we let b and w represent our two colors, then we obtain $P_{D_{4}}((b+w), (b^2+w^2), (b^3+w^3), (b^4+w^4)) = b^6 + b^5w + 3b^4w^2 + 4b^3w^3 + 3b^2w^4 + bw^5 + w^6$.
+\pause
+\item One possible application of the cycle index would be to determine the number of distinct colorings on the bracelet with six beads.
 
+\pause
+\item Let $k$ equal a distinct number of colors.
+
+\pause
+\item $P_{C_{6}}(k,k,k,k,k,k)=\frac{1}{6}(k^{6} + 2k + 2k^{2} + k^{3})$.
+
+\pause
+\item $k=2$, implies $P_{C_{6}}(2,2,2,2,2,2) = 14$.
+
+
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{frame}{}
+    \begin{columns}[T]
+    \begin{column}{0.48\textwidth}
+    \begin{tabular}{r l}
+    	\raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"white white white white white white"}
+        	\begin{scope}[shift={(9,0)}]
+        		\bracelet{"black black black black black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 2\to2 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white white white white white"}
+        	\begin{scope}[shift={(9,0)}]
+        		\bracelet{"white black black black black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 12\to2 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black black white white white white"}
+        	\begin{scope}[shift={(9,0)}]
+        		\bracelet{"white white black black black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 12\to2 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white black white white white"}
+        	\begin{scope}[shift={(9,0)}]
+        		\bracelet{"white black white black black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 12\to2
+    \end{tabular}
+    \end{column}%
+	\hfill%
+	\begin{column}{.48\textwidth}
+        \begin{tabular}{r l}
+    	\raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white white black white white"}
+        	\begin{scope}[shift={(9cm,0)}]
+        		\bracelet{"white black black white black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 6\to2 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black black white black white white"}
+        	\begin{scope}[shift={(9cm,0)}]
+        		\bracelet{"white white black white black black"}
+        	\end{scope}
+    	\end{tikzpicture}} & 12\to2 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black black black white white white"}
+    	\end{tikzpicture}} & 6\to1 \\
+
+        \raisebox{-.45\height}{\begin{tikzpicture}[scale=0.25, transform shape]
+    		\bracelet{"black white black white black white"}
+    	\end{tikzpicture}} & 2\to1
+
+        \end{tabular}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{itemize}
+
+\pause
+\item It's worth noticing that plugging numbers into the cycle index wastes a lot of information.
+
+\pause
+\item Instead, what we can do is expand on the cycle index. This is done by first defining m distinct colors; $c_{1},c_{2},...,c_{m}$.
+
+\pause
+\item What Polya's theorem asks us to consider is the new polynomial $F_{G}=P_{G}(\displaystyle\sum_{j=1}^{m}c_{j},\displaystyle\sum_{j=1}^{m}c_{j}^{2},...,\displaystyle\sum_{j=1}^{m}c_{j}^{n})$.
+
+\pause
+\item What we get is, given any term $Ac_{1}^{\gamma_{1}}c_{2}^{\gamma_{2}}...c_{m}^{\gamma_{m}}$ of polya'a enumeration formula, the coefficient $A$ equals the number of colorings with exactly ${\gamma^{i}}$ elements of color $c_{i}$.
+
+\end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\begin{itemize}
+
+\pause
+\item Example using the 6 beaded bracelet. If we let b and w represent our two colors, then we obtain $P_{C_{6}}((b+w), (b^2+w^2), (b^3+w^3), (b^4+w^4), (b^5+w^5), (b^6+w^6)) = b^6 + b^5w + 3b^4w^2 + 4b^3w^3 + 3b^2w^4 + bw^5 + w^6$.
+
+\pause
 \item The coefficient, of each term, $A_{i}b^{k}w^{j}$ determines the number of possible distinct colorings on the six beaded bracelet using the colors b and w, i and j times for each bead.
 
+\pause
 \item for example, the third term $3b^4w^2$ corresponds to 3 possible colorings, coloring 4 bead's black and 2 bead's white.
 
 \end{itemize}
 \end{frame}
+
 %}}}
 %{{{ Ambers section
 \section{Using What We've Learned with an Example!}
@@ -760,7 +847,7 @@
     \begin{column}{.6\textwidth}
     	   \begin{tikzpicture}
            %{{{ Identity
-           \setcounter{beamerpauses}{3} %do nothing for 3 steps
+            \setcounter{beamerpauses}{3} %do nothing for 3 steps
            %}}}
            %{{{ 90 rotation
             \stepcounter{beamerpauses}
